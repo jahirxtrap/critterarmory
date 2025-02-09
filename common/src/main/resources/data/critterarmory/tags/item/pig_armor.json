@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "critterarmory:iron_pig_armor",
+    "critterarmory:golden_pig_armor",
+    "critterarmory:diamond_pig_armor",
+    "critterarmory:netherite_pig_armor"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.jahirtrap.critterarmory.init.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AnimalMixin",
+    "MobMixin"
+  ],
+  "client": [
+    "ChickenRendererMixin",
+    "CowRendererMixin",
+    "EquipmentLayerRendererMixin",
+    "LayerDefinitionsMixin",
+    "MushroomCowRendererMixin",
+    "PigRendererMixin",
+    "SheepRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

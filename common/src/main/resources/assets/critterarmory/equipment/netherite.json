@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "critterarmory:netherite"
+      }
+    ],
+    "wolf_body": [
+      {
+        "texture": "critterarmory:netherite"
+      }
+    ]
+  }
+}

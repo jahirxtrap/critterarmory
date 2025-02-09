@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "critterarmory:iron_wolf_armor",
+    "critterarmory:golden_wolf_armor",
+    "critterarmory:diamond_wolf_armor",
+    "critterarmory:netherite_wolf_armor"
+  ]
+}
