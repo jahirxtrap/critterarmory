@@ -5,7 +5,7 @@ Armor for your animals: pig, cow, sheep, chicken, wolf & more
 
 <strong>This mod adds:</strong>
 
-- Armor for various mobs => Horse, [WIP] Wolf, [WIP] Chicken, [WIP] Cow, Pig, [WIP] Sheep
+- Armor for various mobs => Horse, [WIP] Wolf, [WIP] Chicken, Cow, Pig, [WIP] Sheep
 - Armor can be equipped by right-clicking the mob and removed using shears
 - Each armor type features custom models tailored for every mob
 - Balanced Feed => Heals mobs by a configurable amount (default: 6)

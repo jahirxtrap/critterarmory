@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "IFI",
+    "IAI",
     "III",
-    "IFI"
+    "IAI"
   ],
   "key": {
     "I": "#c:ingots/iron",
-    "F": "minecraft:carrot"
+    "A": "minecraft:leather"
   },
   "result": {
-    "id": "critterarmory:iron_pig_armor",
+    "id": "critterarmory:iron_cow_armor",
     "count": 1
   }
 }

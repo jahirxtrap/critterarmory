@@ -13,7 +13,7 @@ import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public class ModTab {
     public static final CreativeModeTab TAB_CRITTER_ARMORY = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModContent.NETHERITE_MOB_ARMORS.get(3)))
+            .icon(() -> new ItemStack(ModContent.NETHERITE_MOB_ARMORS.get(4)))
             .displayItems((features, event) -> {
                 for (Item item : ModContent.ITEMS)
                     event.accept(item);

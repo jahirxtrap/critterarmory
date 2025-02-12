@@ -17,7 +17,7 @@ public class ModTab {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public static final Supplier<CreativeModeTab> TAB_CRITTER_ARMORY = TABS.register("tab_critterarmory", () -> CreativeModeTab.builder()
-            .icon(() -> new ItemStack(ModContent.NETHERITE_MOB_ARMORS.get(3).get()))
+            .icon(() -> new ItemStack(ModContent.NETHERITE_MOB_ARMORS.get(4).get()))
             .displayItems((features, event) -> {
                 for (RegistryObject<Item> item : ModContent.ITEMS.getEntries())
                     event.accept(item.get());

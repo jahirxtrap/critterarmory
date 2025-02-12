@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GFG",
+    "GAG",
     "GGG",
-    "GFG"
+    "GAG"
   ],
   "key": {
     "G": "#c:gems/diamond",
-    "F": "minecraft:carrot"
+    "A": "minecraft:leather"
   },
   "result": {
-    "id": "critterarmory:diamond_pig_armor",
+    "id": "critterarmory:diamond_cow_armor",
     "count": 1
   }
 }

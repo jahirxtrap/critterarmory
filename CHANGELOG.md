@@ -1,1 +1,1 @@
-- First release
+- Added cow armor models
