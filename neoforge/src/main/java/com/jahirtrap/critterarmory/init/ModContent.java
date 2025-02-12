@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -26,8 +25,8 @@ public class ModContent {
     public static final List<DeferredItem<Item>> GOLD_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.GOLD, new Item.Properties());
     public static final List<DeferredItem<Item>> DIAMOND_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.DIAMOND, new Item.Properties());
     public static final List<DeferredItem<Item>> NETHERITE_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.NETHERITE, new Item.Properties().fireResistant());
-    public static final DeferredItem<Item> FEED = registerItem("feed", Item::new, new Item.Properties());
-    public static final DeferredItem<Item> PREMIUM_FEED = registerItem("premium_feed", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> BALANCED_FEED = registerItem("balanced_feed", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> VITALITY_FEED = registerItem("vitality_feed", Item::new, new Item.Properties());
 
     private static DeferredItem<Item> registerItem(String name, Function<Item.Properties, Item> function, Item.Properties itemProp) {
         return ITEMS.register(name, () -> function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name)))));

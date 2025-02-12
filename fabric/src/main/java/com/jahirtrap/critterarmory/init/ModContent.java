@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ public class ModContent {
     public static final List<Item> GOLD_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.GOLD, new Item.Properties());
     public static final List<Item> DIAMOND_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.DIAMOND, new Item.Properties());
     public static final List<Item> NETHERITE_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.NETHERITE, new Item.Properties().fireResistant());
-    public static final Item FEED = registerItem("feed", Item::new, new Item.Properties());
-    public static final Item PREMIUM_FEED = registerItem("premium_feed", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item BALANCED_FEED = registerItem("balanced_feed", Item::new, new Item.Properties());
+    public static final Item VITALITY_FEED = registerItem("vitality_feed", Item::new, new Item.Properties());
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function, Item.Properties itemProp) {
         var itemReg = Registry.register(BuiltInRegistries.ITEM, ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name)), function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name)))));

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:wheat",
+    "minecraft:wheat_seeds"
+  ],
+  "result": {
+    "id": "critterarmory:balanced_feed",
+    "count": 2
+  }
+}

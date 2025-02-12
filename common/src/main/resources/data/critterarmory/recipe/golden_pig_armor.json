@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IFI",
+    "III",
+    "IFI"
+  ],
+  "key": {
+    "I": "#c:ingots/gold",
+    "F": "minecraft:carrot"
+  },
+  "result": {
+    "id": "critterarmory:golden_pig_armor",
+    "count": 1
+  }
+}

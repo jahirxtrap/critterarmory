@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "critterarmory:balanced_feed",
+    "minecraft:golden_apple",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "id": "critterarmory:vitality_feed",
+    "count": 1
+  }
+}

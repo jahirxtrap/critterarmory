@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "critterarmory:item/feed"
+    "model": "critterarmory:item/balanced_feed"
   }
 }
