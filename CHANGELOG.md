@@ -1,1 +1,1 @@
-- Added cow armor models
+- Cow armor can now be equipped in mooshroom

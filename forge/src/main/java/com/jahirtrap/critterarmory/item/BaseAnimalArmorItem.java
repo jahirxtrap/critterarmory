@@ -23,7 +23,7 @@ public class BaseAnimalArmorItem {
 
     public enum BodyType {
         CHICKEN(SoundEvents.ITEM_BREAK, EntityType.CHICKEN),
-        COW(SoundEvents.ITEM_BREAK, EntityType.COW),
+        COW(SoundEvents.ITEM_BREAK, EntityType.COW, EntityType.MOOSHROOM),
         PIG(SoundEvents.ITEM_BREAK, EntityType.PIG),
         SHEEP(SoundEvents.ITEM_BREAK, EntityType.SHEEP);
 
