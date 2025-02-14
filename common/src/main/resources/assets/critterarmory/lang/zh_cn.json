@@ -23,7 +23,7 @@
   "item.critterarmory.balanced_feed": "均衡饲料",
   "item.critterarmory.vitality_feed": "活力饲料",
   "itemGroup.critterarmory.tab_critterarmory": "Critter Armory",
-  "critterarmory.config.title": "Critter Armory 配置",
-  "critterarmory.config.category.general": "通用",
-  "critterarmory.config.category.armors": "护甲"
+  "critterarmory.config.title": "Critter Armory",
+  "critterarmory.config.category.general": "General",
+  "critterarmory.config.category.armors": "Armors"
 }

@@ -1,1 +1,1 @@
-- Cow armor can now be equipped in mooshroom
+- Added Chinese translations ([Pull request #1](https://github.com/jahirxtrap/critterarmory/pull/1))
