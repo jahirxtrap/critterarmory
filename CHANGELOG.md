@@ -1,1 +1,1 @@
-- Added chicken armor models
+- Backport to 1.21.3

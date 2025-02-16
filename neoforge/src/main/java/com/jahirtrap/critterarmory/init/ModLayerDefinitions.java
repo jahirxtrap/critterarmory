@@ -14,9 +14,9 @@ public class ModLayerDefinitions {
     public static LayerDefinition ChickenArmor() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
-        PartDefinition partDefinition2 = partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2, -6, -2, 4, 6, 3, cubeDeformation), PartPose.offset(0, 15, -4));
-        partDefinition2.addOrReplaceChild("beak", CubeListBuilder.create().texOffs(14, 0).addBox(-2, -4, -4, 4, 2, 2, cubeDeformation), PartPose.ZERO);
-        partDefinition2.addOrReplaceChild("red_thing", CubeListBuilder.create().texOffs(14, 4).addBox(-1, -2, -3, 2, 2, 2, cubeDeformation), PartPose.ZERO);
+        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2, -6, -2, 4, 6, 3, cubeDeformation), PartPose.offset(0, 15, -4));
+        partDefinition.addOrReplaceChild("beak", CubeListBuilder.create().texOffs(14, 0).addBox(-2, -4, -4, 4, 2, 2, cubeDeformation), PartPose.offset(0, 15, -4));
+        partDefinition.addOrReplaceChild("red_thing", CubeListBuilder.create().texOffs(14, 4).addBox(-1, -2, -3, 2, 2, 2, cubeDeformation), PartPose.offset(0, 15, -4));
         partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 9).addBox(-3, -4, -3, 6, 8, 6, cubeDeformation), PartPose.offsetAndRotation(0, 16, 0, ((float) Math.PI / 2), 0, 0));
         CubeListBuilder cubeListBuilder = CubeListBuilder.create().texOffs(26, 0).addBox(-1, 0, -3, 3, 5, 3, cubeDeformation);
         partDefinition.addOrReplaceChild("right_leg", cubeListBuilder, PartPose.offset(-2, 19, 1));
