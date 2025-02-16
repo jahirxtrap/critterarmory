@@ -43,7 +43,7 @@ public class ModMaterials {
     }
 
     private static Map.Entry<RegistryObject<ArmorMaterial>, String> register(String name, EnumMap<Type, Integer> defense, int i, Holder<SoundEvent> holder, float f, float g, Supplier<Ingredient> supplier) {
-        return Map.entry(MATERIALS.register(name, () -> new ArmorMaterial(defense, i, holder, supplier, List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(MODID, name))), f, g)), name);
+        return Map.entry(MATERIALS.register(name, () -> new ArmorMaterial(defense, i, holder, supplier, List.of(new ArmorMaterial.Layer(new ResourceLocation(MODID, name))), f, g)), name);
     }
 
     private static Map.Entry<RegistryObject<ArmorMaterial>, String> register(RegistryObject<ArmorMaterial> material, String name) {

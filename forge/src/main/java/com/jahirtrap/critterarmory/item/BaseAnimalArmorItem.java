@@ -17,7 +17,7 @@ public class BaseAnimalArmorItem {
 
         public Vanilla(Holder<ArmorMaterial> material, BodyType type, Properties properties) {
             super(material, type, false, properties.stacksTo(1));
-            this.textureLocation = ResourceLocation.parse(material.getRegisteredName()).withPath(path -> "textures/entity/equipment/" + (type == BodyType.EQUESTRIAN ? "horse_body" : "wolf_body") + "/" + path + ".png");
+            this.textureLocation = new ResourceLocation(material.getRegisteredName()).withPath(path -> "textures/entity/equipment/" + (type == BodyType.EQUESTRIAN ? "horse_body" : "wolf_body") + "/" + path + ".png");
         }
 
         @Override

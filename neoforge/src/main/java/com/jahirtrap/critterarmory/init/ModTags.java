@@ -9,12 +9,12 @@ import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public class ModTags {
     public interface Items {
-        TagKey<Item> HORSE_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "horse_armor"));
-        TagKey<Item> WOLF_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "wolf_armor"));
-        TagKey<Item> CHICKEN_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "chicken_armor"));
-        TagKey<Item> COW_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "cow_armor"));
-        TagKey<Item> PIG_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "pig_armor"));
-        TagKey<Item> SHEEP_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "sheep_armor"));
+        TagKey<Item> HORSE_ARMOR = create(new ResourceLocation(MODID, "horse_armor"));
+        TagKey<Item> WOLF_ARMOR = create(new ResourceLocation(MODID, "wolf_armor"));
+        TagKey<Item> CHICKEN_ARMOR = create(new ResourceLocation(MODID, "chicken_armor"));
+        TagKey<Item> COW_ARMOR = create(new ResourceLocation(MODID, "cow_armor"));
+        TagKey<Item> PIG_ARMOR = create(new ResourceLocation(MODID, "pig_armor"));
+        TagKey<Item> SHEEP_ARMOR = create(new ResourceLocation(MODID, "sheep_armor"));
 
         private static TagKey<Item> create(ResourceLocation name) {
             return TagKey.create(Registries.ITEM, name);

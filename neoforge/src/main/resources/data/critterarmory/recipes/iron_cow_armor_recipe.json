@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "A": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "id": "critterarmory:iron_cow_armor",
+    "count": 1
+  }
+}

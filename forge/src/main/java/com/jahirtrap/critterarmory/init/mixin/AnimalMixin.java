@@ -13,7 +13,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.ToolActions;
 import org.spongepowered.asm.mixin.Mixin;
@@ -52,7 +51,7 @@ public abstract class AnimalMixin {
                     entity.setBodyArmorItem(stack.copyWithCount(1));
                     stack.consume(1, player);
                     cir.setReturnValue(InteractionResult.SUCCESS);
-                } else if ((stack.getItem() instanceof ShearsItem || stack.canPerformAction(ToolActions.SHEARS_HARVEST)) && entity.isWearingBodyArmor() && !(EnchantmentHelper.has(entity.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative())) {
+                } else if ((stack.getItem() instanceof ShearsItem || stack.canPerformAction(ToolActions.SHEARS_HARVEST)) && entity.isWearingBodyArmor() && !(EnchantmentHelper.hasBindingCurse(entity.getBodyArmorItem()) && !player.isCreative())) {
                     stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                     entity.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                     ItemStack armor = entity.getBodyArmorItem();

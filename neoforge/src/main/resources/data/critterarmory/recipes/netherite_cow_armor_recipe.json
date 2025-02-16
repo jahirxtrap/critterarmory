@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "critterarmory:diamond_cow_armor"
+  },
+  "addition": {
+    "tag": "c:ingots/netherite"
+  },
+  "result": {
+    "id": "critterarmory:netherite_cow_armor"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

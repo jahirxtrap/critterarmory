@@ -22,7 +22,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation SHEEP_ARMOR = register("sheep_armor", ModLayerDefinitions.SheepArmor());
 
     private static ModelLayerLocation register(String name, LayerDefinition layerDefinition) {
-        ModelLayerLocation layerLocation = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MODID, name), ModelLayers.DEFAULT_LAYER);
+        ModelLayerLocation layerLocation = new ModelLayerLocation(new ResourceLocation(MODID, name), ModelLayers.DEFAULT_LAYER);
         ModelLayers.ALL_MODELS.add(layerLocation);
         LAYERS.put(layerLocation, layerDefinition);
         return layerLocation;

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/gold"
+    },
+    "A": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "id": "critterarmory:golden_cow_armor",
+    "count": 1
+  }
+}

@@ -32,7 +32,7 @@ public class CowArmorLayer extends RenderLayer<Cow, CowModel<Cow>> {
             this.getParentModel().copyPropertiesTo(this.model);
             this.model.prepareMobModel(entity, f, g, h);
             this.model.setupAnim(entity, f, g, j, k, l);
-            renderArmor(ResourceLocation.parse(animalArmorItem.getMaterial().getRegisteredName()), model, stack, poseStack, bufferSource, i);
+            renderArmor(new ResourceLocation(animalArmorItem.getMaterial().getRegisteredName()), model, stack, poseStack, bufferSource, i);
         }
     }
 }

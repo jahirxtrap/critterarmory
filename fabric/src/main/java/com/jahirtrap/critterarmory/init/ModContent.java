@@ -26,7 +26,7 @@ public class ModContent {
     public static final Item VITALITY_FEED = registerItem("vitality_feed", new Item(new Item.Properties()));
 
     private static Item registerItem(String name, Item item) {
-        var itemReg = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name), item);
+        var itemReg = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(MODID, name), item);
         ITEMS.add(itemReg);
         return itemReg;
     }
