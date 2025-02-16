@@ -6,8 +6,12 @@
     "IAI"
   ],
   "key": {
-    "I": "#c:ingots/gold",
-    "A": "minecraft:wheat_seeds"
+    "I": {
+      "tag": "c:ingots/gold"
+    },
+    "A": {
+      "item": "minecraft:wheat_seeds"
+    }
   },
   "result": {
     "id": "critterarmory:golden_chicken_armor",

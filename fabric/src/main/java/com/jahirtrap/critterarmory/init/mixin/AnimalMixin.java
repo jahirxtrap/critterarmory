@@ -2,7 +2,7 @@ package com.jahirtrap.critterarmory.init.mixin;
 
 import com.jahirtrap.critterarmory.init.ModConfig;
 import com.jahirtrap.critterarmory.init.ModContent;
-import net.minecraft.server.level.ServerLevel;
+import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,6 +16,7 @@ import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -43,10 +44,10 @@ public abstract class AnimalMixin {
                         entity.playSound(SoundEvents.PLAYER_LEVELUP);
                     }
                     entity.setHealth(entity.getMaxHealth());
-                    cir.setReturnValue(InteractionResult.SUCCESS_SERVER);
+                    cir.setReturnValue(InteractionResult.SUCCESS);
                 }
             } else {
-                if (entity.isEquippableInSlot(stack, EquipmentSlot.BODY) && !entity.isWearingBodyArmor() && !entity.isBaby()) {
+                if (isEquippableInSlot(stack, EquipmentSlot.BODY) && !entity.isWearingBodyArmor() && !entity.isBaby()) {
                     entity.setBodyArmorItem(stack.copyWithCount(1));
                     stack.consume(1, player);
                     cir.setReturnValue(InteractionResult.SUCCESS);
@@ -55,10 +56,18 @@ public abstract class AnimalMixin {
                     entity.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                     ItemStack armor = entity.getBodyArmorItem();
                     entity.setBodyArmorItem(ItemStack.EMPTY);
-                    if (entity.level() instanceof ServerLevel level) entity.spawnAtLocation(level, armor);
+                    entity.spawnAtLocation(armor);
                     cir.setReturnValue(InteractionResult.SUCCESS);
                 }
             }
         }
+    }
+
+    @Unique
+    private boolean isEquippableInSlot(ItemStack stack, EquipmentSlot slot) {
+        var entity = (Animal) (Object) this;
+        if (entity.canUseSlot(slot) && stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
+            return animalArmorItem.getType().getSlot() == slot && animalArmorItem.getAllowedEntities().contains(entity.getType().builtInRegistryHolder());
+        else return false;
     }
 }

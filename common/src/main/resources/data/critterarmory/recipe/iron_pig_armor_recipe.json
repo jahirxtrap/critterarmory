@@ -6,8 +6,12 @@
     "IAI"
   ],
   "key": {
-    "I": "#c:ingots/iron",
-    "A": "minecraft:carrot"
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "A": {
+      "item": "minecraft:carrot"
+    }
   },
   "result": {
     "id": "critterarmory:iron_pig_armor",

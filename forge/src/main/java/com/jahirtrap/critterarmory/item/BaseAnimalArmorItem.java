@@ -1,23 +1,51 @@
 package com.jahirtrap.critterarmory.item;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.AnimalArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
 
 public class BaseAnimalArmorItem {
     public static class Vanilla extends AnimalArmorItem {
-        public Vanilla(ArmorMaterial material, BodyType type, Properties properties) {
-            super(material, type, material.equipSound(), false, properties.stacksTo(1));
+        private final ResourceLocation textureLocation;
+
+        public Vanilla(Holder<ArmorMaterial> material, BodyType type, Properties properties) {
+            super(material, type, false, properties.stacksTo(1));
+            this.textureLocation = ResourceLocation.parse(material.getRegisteredName()).withPath(path -> "textures/entity/equipment/" + (type == BodyType.EQUESTRIAN ? "horse_body" : "wolf_body") + "/" + path + ".png");
+        }
+
+        @Override
+        public ResourceLocation getTexture() {
+            return this.textureLocation;
         }
     }
 
-    public static class Modded extends Item {
-        public Modded(ArmorMaterial material, BodyType type, Properties properties) {
-            super(material.animalProperties(properties.stacksTo(1), material.equipSound(), false, type.allowedEntities));
+    public static class Modded extends ArmorItem {
+        private final BodyType bodyType;
+
+        public Modded(Holder<ArmorMaterial> material, BodyType type, Properties properties) {
+            super(material, ArmorItem.Type.BODY, properties.stacksTo(1));
+            this.bodyType = type;
+        }
+
+        public HolderSet<EntityType<?>> getAllowedEntities() {
+            return this.bodyType.allowedEntities;
+        }
+
+        @Override
+        public SoundEvent getBreakingSound() {
+            return this.bodyType.breakingSound;
+        }
+
+        @Override
+        public boolean isEnchantable(ItemStack stack) {
+            return false;
         }
     }
 

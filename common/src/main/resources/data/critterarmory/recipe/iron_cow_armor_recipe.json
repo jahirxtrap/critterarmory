@@ -6,8 +6,12 @@
     "IAI"
   ],
   "key": {
-    "I": "#c:ingots/iron",
-    "A": "minecraft:leather"
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "A": {
+      "item": "minecraft:leather"
+    }
   },
   "result": {
     "id": "critterarmory:iron_cow_armor",

@@ -6,8 +6,12 @@
     "GAG"
   ],
   "key": {
-    "G": "#c:gems/diamond",
-    "A": "minecraft:wheat_seeds"
+    "G": {
+      "tag": "c:gems/diamond"
+    },
+    "A": {
+      "item": "minecraft:wheat_seeds"
+    }
   },
   "result": {
     "id": "critterarmory:diamond_chicken_armor",

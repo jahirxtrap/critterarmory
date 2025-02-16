@@ -6,8 +6,12 @@
     "GAG"
   ],
   "key": {
-    "G": "#c:gems/diamond",
-    "A": "minecraft:leather"
+    "G": {
+      "tag": "c:gems/diamond"
+    },
+    "A": {
+      "item": "minecraft:leather"
+    }
   },
   "result": {
     "id": "critterarmory:diamond_cow_armor",

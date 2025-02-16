@@ -6,8 +6,12 @@
     "IAI"
   ],
   "key": {
-    "I": "#c:ingots/gold",
-    "A": "minecraft:leather"
+    "I": {
+      "tag": "c:ingots/gold"
+    },
+    "A": {
+      "item": "minecraft:leather"
+    }
   },
   "result": {
     "id": "critterarmory:golden_cow_armor",

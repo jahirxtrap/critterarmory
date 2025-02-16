@@ -6,8 +6,12 @@
     "GAG"
   ],
   "key": {
-    "G": "#c:gems/diamond",
-    "A": "minecraft:carrot"
+    "G": {
+      "tag": "c:gems/diamond"
+    },
+    "A": {
+      "item": "minecraft:carrot"
+    }
   },
   "result": {
     "id": "critterarmory:diamond_pig_armor",

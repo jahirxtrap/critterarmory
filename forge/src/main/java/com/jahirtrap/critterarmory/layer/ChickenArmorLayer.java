@@ -1,43 +1,38 @@
 package com.jahirtrap.critterarmory.layer;
 
 import com.jahirtrap.critterarmory.init.ModModelLayers;
-import com.jahirtrap.critterarmory.util.RenderStates;
+import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.ChickenModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static com.jahirtrap.critterarmory.util.CommonUtils.renderArmor;
 
 @OnlyIn(Dist.CLIENT)
-public class ChickenArmorLayer extends RenderLayer<ChickenRenderState, ChickenModel> {
-    private final ChickenModel adultModel;
-    private final ChickenModel babyModel;
+public class ChickenArmorLayer extends RenderLayer<Chicken, ChickenModel<Chicken>> {
+    private final ChickenModel<Chicken> model;
 
-    public ChickenArmorLayer(RenderLayerParent<ChickenRenderState, ChickenModel> layerParent, EntityModelSet modelSet) {
+    public ChickenArmorLayer(RenderLayerParent<Chicken, ChickenModel<Chicken>> layerParent, EntityModelSet modelSet) {
         super(layerParent);
-        this.adultModel = new ChickenModel(modelSet.bakeLayer(ModModelLayers.CHICKEN_ARMOR));
-        this.babyModel = new ChickenModel(modelSet.bakeLayer(ModModelLayers.CHICKEN_BABY_ARMOR));
+        this.model = new ChickenModel<>(modelSet.bakeLayer(ModModelLayers.CHICKEN_ARMOR));
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, ChickenRenderState renderState, float f, float g) {
-        if (renderState instanceof RenderStates.Chicken armorRenderState) {
-            ItemStack stack = armorRenderState.bodyArmorItem;
-            Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
-            if (equippable != null && equippable.model().isPresent()) {
-                ChickenModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                model.setupAnim(armorRenderState);
-                renderArmor(equippable.model().get(), model, stack, poseStack, bufferSource, i);
-            }
+    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, Chicken entity, float f, float g, float h, float j, float k, float l) {
+        ItemStack stack = entity.getBodyArmorItem();
+        if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem) {
+            this.getParentModel().copyPropertiesTo(this.model);
+            this.model.prepareMobModel(entity, f, g, h);
+            this.model.setupAnim(entity, f, g, j, k, l);
+            renderArmor(ResourceLocation.parse(animalArmorItem.getMaterial().getRegisteredName()), model, stack, poseStack, bufferSource, i);
         }
     }
 }

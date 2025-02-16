@@ -1,9 +1,15 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "critterarmory:balanced_feed",
-    "minecraft:golden_apple",
-    "minecraft:honey_bottle"
+    {
+      "item": "critterarmory:balanced_feed"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
   ],
   "result": {
     "id": "critterarmory:vitality_feed",
