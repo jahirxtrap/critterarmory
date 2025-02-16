@@ -33,7 +33,7 @@ public class MushroomCowArmorLayer extends RenderLayer<MushroomCowRenderState, C
         if (renderState instanceof RenderStates.MushroomCow armorRenderState) {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
-            if (equippable != null && !equippable.assetId().isEmpty()) {
+            if (equippable != null && equippable.assetId().isPresent()) {
                 CowModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
                 model.setupAnim(armorRenderState);
                 renderArmor(equippable.assetId().get(), model, stack, poseStack, bufferSource, i);

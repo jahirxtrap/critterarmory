@@ -33,7 +33,7 @@ public class SheepArmorLayer extends RenderLayer<SheepRenderState, SheepModel> {
         if (renderState instanceof RenderStates.Sheep armorRenderState) {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
-            if (equippable != null && !equippable.assetId().isEmpty()) {
+            if (equippable != null && equippable.assetId().isPresent()) {
                 SheepModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
                 model.setupAnim(armorRenderState);
                 renderArmor(equippable.assetId().get(), model, stack, poseStack, bufferSource, i);

@@ -45,7 +45,7 @@ public class CommonUtils {
             return;
         String type = getArmorType(stack);
         if (!type.isBlank()) {
-            VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(resourceKey.location().withPath("textures/entity/equipment/" + type + "/" + resourceKey.location().getPath() + ".png")));
+            VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(resourceKey.location().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png")));
             model.renderToBuffer(poseStack, consumer, i, OverlayTexture.NO_OVERLAY);
         }
     }

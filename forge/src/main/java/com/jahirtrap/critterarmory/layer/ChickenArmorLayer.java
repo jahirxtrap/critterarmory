@@ -33,7 +33,7 @@ public class ChickenArmorLayer extends RenderLayer<ChickenRenderState, ChickenMo
         if (renderState instanceof RenderStates.Chicken armorRenderState) {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
-            if (equippable != null && !equippable.assetId().isEmpty()) {
+            if (equippable != null && equippable.assetId().isPresent()) {
                 ChickenModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
                 model.setupAnim(armorRenderState);
                 renderArmor(equippable.assetId().get(), model, stack, poseStack, bufferSource, i);

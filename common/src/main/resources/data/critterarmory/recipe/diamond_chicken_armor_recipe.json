@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GAG",
+    "GGG",
+    "GAG"
+  ],
+  "key": {
+    "G": "#c:gems/diamond",
+    "A": "minecraft:wheat_seeds"
+  },
+  "result": {
+    "id": "critterarmory:diamond_chicken_armor",
+    "count": 1
+  }
+}

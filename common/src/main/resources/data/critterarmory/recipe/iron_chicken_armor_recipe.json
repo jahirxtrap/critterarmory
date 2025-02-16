@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": "#c:ingots/iron",
+    "A": "minecraft:wheat_seeds"
+  },
+  "result": {
+    "id": "critterarmory:iron_chicken_armor",
+    "count": 1
+  }
+}

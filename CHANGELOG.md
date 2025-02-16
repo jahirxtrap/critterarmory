@@ -1,1 +1,1 @@
-- Added Chinese translations ([Pull request #1](https://github.com/jahirxtrap/critterarmory/pull/1))
+- Added chicken armor models
