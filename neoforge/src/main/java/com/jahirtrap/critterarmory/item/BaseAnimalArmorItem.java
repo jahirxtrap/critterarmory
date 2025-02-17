@@ -16,8 +16,16 @@ public class BaseAnimalArmorItem {
     }
 
     public static class Modded extends Item {
+        private final BodyType bodyType;
+
         public Modded(ArmorMaterial material, BodyType type, Properties properties) {
             super(material.animalProperties(properties.stacksTo(1), material.equipSound(), false, type.allowedEntities));
+            this.bodyType = type;
+        }
+
+        @Override
+        public SoundEvent getBreakingSound() {
+            return this.bodyType.breakingSound;
         }
     }
 
@@ -36,5 +44,3 @@ public class BaseAnimalArmorItem {
         }
     }
 }
-
-
