@@ -3,6 +3,7 @@ package com.jahirtrap.critterarmory.init;
 import com.jahirtrap.critterarmory.util.AnimalMaterial;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -12,14 +13,14 @@ import java.util.function.Supplier;
 import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public enum ModMaterials implements AnimalMaterial {
-    IRON(ArmorMaterials.IRON, "iron", 15, 5),
-    GOLD(ArmorMaterials.GOLD, "golden", 7, 7),
-    DIAMOND(ArmorMaterials.DIAMOND, "diamond", 33, 11),
-    NETHERITE(ArmorMaterials.NETHERITE, "netherite", 37, 11);
+    IRON(ArmorMaterials.IRON, "iron"),
+    GOLD(ArmorMaterials.GOLD, "golden"),
+    DIAMOND(ArmorMaterials.DIAMOND, "diamond"),
+    NETHERITE(ArmorMaterials.NETHERITE, "netherite");
 
     private final String name;
     private final ResourceLocation location;
-    private final int durabilityMultiplier;
+    private final int durability;
     private final int defense;
     private final int enchantmentValue;
     private final SoundEvent sound;
@@ -30,7 +31,7 @@ public enum ModMaterials implements AnimalMaterial {
     ModMaterials(String name, int durabilityMultiplier, int defense, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> ingredient) {
         this.name = name;
         this.location = new ResourceLocation(MODID, name);
-        this.durabilityMultiplier = durabilityMultiplier;
+        this.durability = durabilityMultiplier * 16;
         this.defense = defense;
         this.enchantmentValue = enchantmentValue;
         this.sound = sound;
@@ -39,11 +40,11 @@ public enum ModMaterials implements AnimalMaterial {
         this.ingredient = ingredient;
     }
 
-    ModMaterials(ArmorMaterial material, String name, int durabilityMultiplier, int defense) {
+    ModMaterials(ArmorMaterial material, String name) {
         this.name = name;
         this.location = new ResourceLocation(MODID, material.getName());
-        this.durabilityMultiplier = durabilityMultiplier;
-        this.defense = defense;
+        this.durability = material.getDurabilityForType(Type.CHESTPLATE);
+        this.defense = material.getDefenseForType(Type.CHESTPLATE);
         this.enchantmentValue = material.getEnchantmentValue();
         this.sound = material.getEquipSound();
         this.toughness = material.getToughness();
@@ -52,7 +53,7 @@ public enum ModMaterials implements AnimalMaterial {
     }
 
     public int getDurability() {
-        return durabilityMultiplier * 15;
+        return durability;
     }
 
     public int getDefense() {
