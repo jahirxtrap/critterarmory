@@ -103,11 +103,11 @@ public abstract class AnimalMixin {
             if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem) {
                 entity.setItemSlot(EquipmentSlot.CHEST, stack);
                 if (animalArmorItem.getMaterial().getDefense() != 0)
-                    entity.getAttribute(Attributes.ARMOR).addTransientModifier(new AttributeModifier(ARMOR_MODIFIER_UUID, "Animal armor bonus", animalArmorItem.getMaterial().getDefense(), AttributeModifier.Operation.ADDITION));
+                    entity.getAttribute(Attributes.ARMOR).addPermanentModifier(new AttributeModifier(ARMOR_MODIFIER_UUID, "Animal armor bonus", animalArmorItem.getMaterial().getDefense(), AttributeModifier.Operation.ADDITION));
                 if (animalArmorItem.getMaterial().getToughness() != 0)
-                    entity.getAttribute(Attributes.ARMOR_TOUGHNESS).addTransientModifier(new AttributeModifier(ARMOR_TOUGHNESS_MODIFIER_UUID, "Animal toughness", animalArmorItem.getMaterial().getKnockbackResistance(), AttributeModifier.Operation.ADDITION));
+                    entity.getAttribute(Attributes.ARMOR_TOUGHNESS).addPermanentModifier(new AttributeModifier(ARMOR_TOUGHNESS_MODIFIER_UUID, "Animal toughness", animalArmorItem.getMaterial().getKnockbackResistance(), AttributeModifier.Operation.ADDITION));
                 if (animalArmorItem.getMaterial().getKnockbackResistance() != 0)
-                    entity.getAttribute(Attributes.KNOCKBACK_RESISTANCE).addTransientModifier(new AttributeModifier(KNOCKBACK_RESISTANCE_MODIFIER_UUID, "Animal knockback resistance", animalArmorItem.getMaterial().getKnockbackResistance(), AttributeModifier.Operation.ADDITION));
+                    entity.getAttribute(Attributes.KNOCKBACK_RESISTANCE).addPermanentModifier(new AttributeModifier(KNOCKBACK_RESISTANCE_MODIFIER_UUID, "Animal knockback resistance", animalArmorItem.getMaterial().getKnockbackResistance(), AttributeModifier.Operation.ADDITION));
                 entity.setGuaranteedDrop(EquipmentSlot.CHEST);
             }
         }
