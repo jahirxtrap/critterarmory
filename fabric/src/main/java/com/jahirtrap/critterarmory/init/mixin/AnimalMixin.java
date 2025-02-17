@@ -50,7 +50,7 @@ public abstract class AnimalMixin {
                     entity.usePlayerItem(player, hand, stack);
                     if (entity.getMaxHealth() < healthLimit) {
                         entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Math.min(entity.getMaxHealth() + ModConfig.healthIncreaseAmount, healthLimit));
-                        entity.playSound(SoundEvents.PLAYER_LEVELUP);
+                        entity.playSound(SoundEvents.PLAYER_LEVELUP, 1, 1);
                     }
                     entity.setHealth(entity.getMaxHealth());
                     cir.setReturnValue(InteractionResult.SUCCESS);
@@ -61,12 +61,12 @@ public abstract class AnimalMixin {
                     armor.setCount(1);
                     setArmorEquipment(armor);
                     if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
-                        entity.playSound(animalArmorItem.getMaterial().getEquipSound());
+                        entity.playSound(animalArmorItem.getMaterial().getEquipSound(), 1, 1);
                     if (!player.getAbilities().instabuild) stack.shrink(1);
                     cir.setReturnValue(InteractionResult.SUCCESS);
                 } else if (stack.getItem() instanceof ShearsItem && entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.hasBindingCurse(entity.getItemBySlot(EquipmentSlot.CHEST)) && !player.isCreative())) {
                     stack.hurtAndBreak(1, player, a -> a.broadcastBreakEvent(hand));
-                    entity.playSound(SoundEvents.SHEEP_SHEAR);
+                    entity.playSound(SoundEvents.SHEEP_SHEAR, 1, 1);
                     ItemStack armor = entity.getItemBySlot(EquipmentSlot.CHEST);
                     setArmorEquipment(ItemStack.EMPTY);
                     entity.spawnAtLocation(armor);
