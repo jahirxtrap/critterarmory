@@ -58,7 +58,9 @@ public abstract class AnimalMixin {
                 }
             } else {
                 if (isEquippable(stack) && entity.getItemBySlot(EquipmentSlot.CHEST).isEmpty() && !entity.isBaby()) {
-                    setArmorEquipment(stack.copyWithCount(1));
+                    ItemStack armor = stack.copy();
+                    armor.setCount(1);
+                    setArmorEquipment(armor);
                     if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
                         entity.playSound(animalArmorItem.getMaterial().getEquipSound());
                     if (!player.getAbilities().instabuild) stack.shrink(1);
@@ -100,7 +102,7 @@ public abstract class AnimalMixin {
             entity.getAttribute(Attributes.KNOCKBACK_RESISTANCE).removeModifier(KNOCKBACK_RESISTANCE_MODIFIER_UUID);
             entity.setDropChance(EquipmentSlot.CHEST, 0);
             if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem) {
-                entity.setItemSlot(EquipmentSlot.CHEST, stack.copyWithCount(1));
+                entity.setItemSlot(EquipmentSlot.CHEST, stack);
                 if (animalArmorItem.getMaterial().getDefense() != 0)
                     entity.getAttribute(Attributes.ARMOR).addTransientModifier(new AttributeModifier(ARMOR_MODIFIER_UUID, "Animal armor bonus", animalArmorItem.getMaterial().getDefense(), AttributeModifier.Operation.ADDITION));
                 if (animalArmorItem.getMaterial().getToughness() != 0)

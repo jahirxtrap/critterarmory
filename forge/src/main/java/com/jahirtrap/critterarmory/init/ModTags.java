@@ -1,6 +1,6 @@
 package com.jahirtrap.critterarmory.init;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -17,7 +17,7 @@ public class ModTags {
         TagKey<Item> SHEEP_ARMOR = create(new ResourceLocation(MODID, "sheep_armor"));
 
         private static TagKey<Item> create(ResourceLocation name) {
-            return TagKey.create(Registries.ITEM, name);
+            return TagKey.create(Registry.ITEM_REGISTRY, name);
         }
     }
 }

@@ -1,8 +1,9 @@
 package com.jahirtrap.critterarmory.init;
 
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
+import com.jahirtrap.critterarmory.item.BaseItem;
 import com.jahirtrap.critterarmory.util.AnimalMaterial;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,14 +16,14 @@ import java.util.function.Supplier;
 import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public class ModContent {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registry.ITEM_REGISTRY, MODID);
 
     public static final List<RegistryObject<Item>> IRON_MOB_ARMORS = registerMobArmors(ModMaterials.IRON, new Item.Properties());
     public static final List<RegistryObject<Item>> GOLD_MOB_ARMORS = registerMobArmors(ModMaterials.GOLD, new Item.Properties());
     public static final List<RegistryObject<Item>> DIAMOND_MOB_ARMORS = registerMobArmors(ModMaterials.DIAMOND, new Item.Properties());
     public static final List<RegistryObject<Item>> NETHERITE_MOB_ARMORS = registerMobArmors(ModMaterials.NETHERITE, new Item.Properties().fireResistant());
-    public static final RegistryObject<Item> BALANCED_FEED = registerItem("balanced_feed", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> VITALITY_FEED = registerItem("vitality_feed", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BALANCED_FEED = registerItem("balanced_feed", () -> new BaseItem(new Item.Properties()));
+    public static final RegistryObject<Item> VITALITY_FEED = registerItem("vitality_feed", () -> new BaseItem(new Item.Properties()));
 
     private static RegistryObject<Item> registerItem(String name, Supplier<Item> supplier) {
         return ITEMS.register(name, supplier);

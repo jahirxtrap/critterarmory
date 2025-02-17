@@ -5,8 +5,9 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.HorseArmorItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import static com.jahirtrap.critterarmory.init.ModTab.TAB_CRITTER_ARMORY;
 
 public class BaseAnimalArmorItem {
     public static class Vanilla extends HorseArmorItem {
@@ -14,9 +15,9 @@ public class BaseAnimalArmorItem {
         private final ResourceLocation texture;
 
         public Vanilla(AnimalMaterial material, Properties properties) {
-            super(material.getDefense(), material.getName(), properties.stacksTo(1));
+            super(material.getDefense(), material.getName(), properties.stacksTo(1).tab(TAB_CRITTER_ARMORY));
             this.material = material;
-            this.texture = material.getLocation().withPath(path -> "textures/entity/equipment/horse_body/" + path + ".png");
+            this.texture = new ResourceLocation(material.getLocation().getNamespace(), "textures/entity/equipment/horse_body/" + material.getLocation().getPath() + ".png");
         }
 
         public AnimalMaterial getMaterial() {
@@ -29,7 +30,7 @@ public class BaseAnimalArmorItem {
         }
     }
 
-    public static class Modded extends Item {
+    public static class Modded extends BaseItem {
         private final AnimalMaterial material;
         private final BodyType bodyType;
 
