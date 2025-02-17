@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing_transform",
+  "type": "minecraft:smithing",
   "base": {
     "item": "critterarmory:diamond_chicken_armor"
   },
@@ -8,8 +8,5 @@
   },
   "result": {
     "item": "critterarmory:netherite_chicken_armor"
-  },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
   }
 }

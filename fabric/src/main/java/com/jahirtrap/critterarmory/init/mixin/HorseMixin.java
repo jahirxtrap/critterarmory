@@ -24,7 +24,7 @@ public class HorseMixin {
     @Inject(method = "setArmorEquipment", at = @At("TAIL"))
     private void setArmorEquipment(ItemStack stack, CallbackInfo ci) {
         var entity = (Horse) (Object) this;
-        if (!entity.level().isClientSide()) {
+        if (!entity.getLevel().isClientSide()) {
             entity.getAttribute(Attributes.ARMOR_TOUGHNESS).removeModifier(ARMOR_TOUGHNESS_MODIFIER_UUID);
             entity.getAttribute(Attributes.KNOCKBACK_RESISTANCE).removeModifier(KNOCKBACK_RESISTANCE_MODIFIER_UUID);
             if (stack.getItem() instanceof BaseAnimalArmorItem.Vanilla animalArmorItem) {

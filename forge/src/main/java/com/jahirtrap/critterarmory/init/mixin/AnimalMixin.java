@@ -45,7 +45,7 @@ public abstract class AnimalMixin {
                 entity.usePlayerItem(player, hand, stack);
                 entity.heal(ModConfig.healAmount);
                 cir.setReturnValue(InteractionResult.SUCCESS);
-            } else if (!entity.level().isClientSide() && stack.is(ModContent.VITALITY_FEED.get())) {
+            } else if (!entity.getLevel().isClientSide() && stack.is(ModContent.VITALITY_FEED.get())) {
                 int healthLimit = ModConfig.healthIncreaseLimit;
                 if (entity.getMaxHealth() < healthLimit || entity.getHealth() < entity.getMaxHealth()) {
                     entity.usePlayerItem(player, hand, stack);
@@ -93,7 +93,7 @@ public abstract class AnimalMixin {
     @Unique
     private void setArmorEquipment(ItemStack stack) {
         var entity = (Animal) (Object) this;
-        if (!entity.level().isClientSide()) {
+        if (!entity.getLevel().isClientSide()) {
             entity.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
             entity.getAttribute(Attributes.ARMOR).removeModifier(ARMOR_MODIFIER_UUID);
             entity.getAttribute(Attributes.ARMOR_TOUGHNESS).removeModifier(ARMOR_TOUGHNESS_MODIFIER_UUID);
