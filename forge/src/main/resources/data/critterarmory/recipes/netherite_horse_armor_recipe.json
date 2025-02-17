@@ -7,7 +7,7 @@
     "tag": "forge:ingots/netherite"
   },
   "result": {
-    "id": "critterarmory:netherite_horse_armor"
+    "item": "critterarmory:netherite_horse_armor"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

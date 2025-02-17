@@ -16,7 +16,7 @@ public abstract class HorseArmorLayerMixin {
 
     @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/animal/horse/Horse;FFFFFF)V", at = @At("HEAD"), cancellable = true)
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, Horse entity, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
-        if ((!ModConfig.renderArmors || !ModConfig.renderHorseArmors) && entity.getBodyArmorItem().is(ModTags.Items.HORSE_ARMOR))
+        if ((!ModConfig.renderArmors || !ModConfig.renderHorseArmors) && entity.getArmor().is(ModTags.Items.HORSE_ARMOR))
             ci.cancel();
     }
 }

@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AnimalMixin",
-    "MobMixin",
-    "WolfMixin"
+    "HorseMixin"
   ],
   "client": [
     "ChickenRendererMixin",
@@ -16,7 +15,7 @@
     "MushroomCowRendererMixin",
     "PigRendererMixin",
     "SheepRendererMixin",
-    "WolfArmorLayerMixin"
+    "WolfRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,46 +1,50 @@
 package com.jahirtrap.critterarmory.item;
 
-import net.minecraft.core.Holder;
+import com.jahirtrap.critterarmory.util.AnimalMaterial;
 import net.minecraft.core.HolderSet;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.AnimalArmorItem;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.HorseArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class BaseAnimalArmorItem {
-    public static class Vanilla extends AnimalArmorItem {
-        private final ResourceLocation textureLocation;
+    public static class Vanilla extends HorseArmorItem {
+        private final AnimalMaterial material;
+        private final ResourceLocation texture;
 
-        public Vanilla(Holder<ArmorMaterial> material, BodyType type, Properties properties) {
-            super(material, type, false, properties.stacksTo(1));
-            this.textureLocation = new ResourceLocation(material.getRegisteredName()).withPath(path -> "textures/entity/equipment/" + (type == BodyType.EQUESTRIAN ? "horse_body" : "wolf_body") + "/" + path + ".png");
+        public Vanilla(AnimalMaterial material, Properties properties) {
+            super(material.getDefense(), material.getName(), properties.stacksTo(1));
+            this.material = material;
+            this.texture = material.getLocation().withPath(path -> "textures/entity/equipment/horse_body/" + path + ".png");
+        }
+
+        public AnimalMaterial getMaterial() {
+            return this.material;
         }
 
         @Override
         public ResourceLocation getTexture() {
-            return this.textureLocation;
+            return this.texture;
         }
     }
 
-    public static class Modded extends ArmorItem {
+    public static class Modded extends Item {
+        private final AnimalMaterial material;
         private final BodyType bodyType;
 
-        public Modded(Holder<ArmorMaterial> material, BodyType type, Properties properties) {
-            super(material, ArmorItem.Type.BODY, properties.stacksTo(1));
+        public Modded(AnimalMaterial material, BodyType type, Properties properties) {
+            super(properties.stacksTo(1));
+            this.material = material;
             this.bodyType = type;
+        }
+
+        public AnimalMaterial getMaterial() {
+            return this.material;
         }
 
         public HolderSet<EntityType<?>> getAllowedEntities() {
             return this.bodyType.allowedEntities;
-        }
-
-        @Override
-        public SoundEvent getBreakingSound() {
-            return this.bodyType.breakingSound;
         }
 
         @Override
@@ -50,19 +54,16 @@ public class BaseAnimalArmorItem {
     }
 
     public enum BodyType {
-        CHICKEN(SoundEvents.ITEM_BREAK, EntityType.CHICKEN),
-        COW(SoundEvents.ITEM_BREAK, EntityType.COW, EntityType.MOOSHROOM),
-        PIG(SoundEvents.ITEM_BREAK, EntityType.PIG),
-        SHEEP(SoundEvents.ITEM_BREAK, EntityType.SHEEP);
+        CANINE(EntityType.WOLF),
+        CHICKEN(EntityType.CHICKEN),
+        COW(EntityType.COW, EntityType.MOOSHROOM),
+        PIG(EntityType.PIG),
+        SHEEP(EntityType.SHEEP);
 
-        final SoundEvent breakingSound;
         final HolderSet<EntityType<?>> allowedEntities;
 
-        BodyType(final SoundEvent soundEvent, final EntityType<?>... entityTypes) {
-            this.breakingSound = soundEvent;
+        BodyType(final EntityType<?>... entityTypes) {
             this.allowedEntities = HolderSet.direct(EntityType::builtInRegistryHolder, entityTypes);
         }
     }
 }
-
-

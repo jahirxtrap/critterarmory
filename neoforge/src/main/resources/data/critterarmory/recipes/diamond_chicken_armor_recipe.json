@@ -7,14 +7,14 @@
   ],
   "key": {
     "G": {
-      "tag": "c:gems/diamond"
+      "tag": "forge:gems/diamond"
     },
     "A": {
       "item": "minecraft:wheat_seeds"
     }
   },
   "result": {
-    "id": "critterarmory:diamond_chicken_armor",
+    "item": "critterarmory:diamond_chicken_armor",
     "count": 1
   }
 }

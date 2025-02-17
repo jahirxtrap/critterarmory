@@ -1,9 +1,7 @@
 package com.jahirtrap.critterarmory.init;
 
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.AnimalArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
+import com.jahirtrap.critterarmory.util.AnimalMaterial;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -11,7 +9,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
@@ -30,15 +27,15 @@ public class ModContent {
         return ITEMS.register(name, supplier);
     }
 
-    private static List<DeferredItem<Item>> registerMobArmors(Map.Entry<Holder<ArmorMaterial>, String> entry, Item.Properties itemProp) {
+    private static List<DeferredItem<Item>> registerMobArmors(AnimalMaterial material, Item.Properties itemProp) {
         List<DeferredItem<Item>> items = new ArrayList<>();
-        if (entry.getKey() != ModMaterials.IRON.getKey() && entry.getKey() != ModMaterials.GOLD.getKey() && entry.getKey() != ModMaterials.DIAMOND.getKey())
-            items.add(registerItem(entry.getValue() + "_horse_armor", () -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.EQUESTRIAN, itemProp)));
-        items.add(registerItem(entry.getValue() + "_wolf_armor", () -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.CANINE, itemProp)));
-        items.add(registerItem(entry.getValue() + "_chicken_armor", () -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.CHICKEN, itemProp)));
-        items.add(registerItem(entry.getValue() + "_cow_armor", () -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.COW, itemProp)));
-        items.add(registerItem(entry.getValue() + "_pig_armor", () -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.PIG, itemProp)));
-        items.add(registerItem(entry.getValue() + "_sheep_armor", () -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.SHEEP, itemProp)));
+        if (material != ModMaterials.IRON && material != ModMaterials.GOLD && material != ModMaterials.DIAMOND)
+            items.add(registerItem(material.getName() + "_horse_armor", () -> new BaseAnimalArmorItem.Vanilla(material, itemProp)));
+        items.add(registerItem(material.getName() + "_wolf_armor", () -> new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.CANINE, itemProp)));
+        items.add(registerItem(material.getName() + "_chicken_armor", () -> new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.CHICKEN, itemProp)));
+        items.add(registerItem(material.getName() + "_cow_armor", () -> new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.COW, itemProp)));
+        items.add(registerItem(material.getName() + "_pig_armor", () -> new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.PIG, itemProp)));
+        items.add(registerItem(material.getName() + "_sheep_armor", () -> new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.SHEEP, itemProp)));
         return items;
     }
 

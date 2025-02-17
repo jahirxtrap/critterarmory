@@ -12,7 +12,7 @@ issueTrackerURL = "${mod_issues}"
     logoFile = "logo.png"
     authors = "${mod_author}"
     description = "${mod_description}"
-    itemIcon = "kuromaterials:zurite_ingot"
+    itemIcon = "randomisfits:netherite_multitool"
 
 [[dependencies.${mod_id}]]
     modId = "neoforge"

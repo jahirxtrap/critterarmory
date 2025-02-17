@@ -11,6 +11,23 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ModLayerDefinitions {
     private static final CubeDeformation cubeDeformation = new CubeDeformation(0.2f);
 
+    public static LayerDefinition WolfArmor() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+        PartDefinition partDefinition2 = partDefinition.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.offset(-1, 13.5F, -7));
+        partDefinition2.addOrReplaceChild("real_head", CubeListBuilder.create().texOffs(0, 0).addBox(-2, -3, -2, 6, 6, 4, cubeDeformation).texOffs(16, 14).addBox(-2, -5, 0, 2, 2, 1, cubeDeformation).texOffs(16, 14).addBox(2, -5, 0, 2, 2, 1, cubeDeformation).texOffs(0, 10).addBox(-0.5F, -0.001F, -5, 3, 3, 4, cubeDeformation), PartPose.ZERO);
+        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(18, 14).addBox(-3, -2, -3, 6, 9, 6, cubeDeformation), PartPose.offsetAndRotation(0, 14, 2, ((float) Math.PI / 2), 0, 0));
+        partDefinition.addOrReplaceChild("upper_body", CubeListBuilder.create().texOffs(21, 0).addBox(-3, -3, -3, 8, 6, 7, cubeDeformation), PartPose.offsetAndRotation(-1, 14, -3, ((float) Math.PI / 2), 0, 0));
+        CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 18).addBox(0, 0, -1, 2, 8, 2, cubeDeformation);
+        partDefinition.addOrReplaceChild("right_hind_leg", cubelistbuilder, PartPose.offset(-2.5F, 16, 7));
+        partDefinition.addOrReplaceChild("left_hind_leg", cubelistbuilder, PartPose.offset(0.5F, 16, 7));
+        partDefinition.addOrReplaceChild("right_front_leg", cubelistbuilder, PartPose.offset(-2.5F, 16, -4));
+        partDefinition.addOrReplaceChild("left_front_leg", cubelistbuilder, PartPose.offset(0.5F, 16, -4));
+        PartDefinition partdefinition3 = partDefinition.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offsetAndRotation(-1, 12, 8, ((float) Math.PI / 5), 0, 0));
+        partdefinition3.addOrReplaceChild("real_tail", CubeListBuilder.create().texOffs(9, 18).addBox(0, 0, -1, 2, 8, 2, cubeDeformation), PartPose.ZERO);
+        return LayerDefinition.create(meshDefinition, 64, 32);
+    }
+
     public static LayerDefinition ChickenArmor() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();

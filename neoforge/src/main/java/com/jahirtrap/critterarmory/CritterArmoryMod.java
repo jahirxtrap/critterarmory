@@ -3,7 +3,6 @@ package com.jahirtrap.critterarmory;
 import com.jahirtrap.configlib.TXFConfig;
 import com.jahirtrap.critterarmory.init.ModConfig;
 import com.jahirtrap.critterarmory.init.ModContent;
-import com.jahirtrap.critterarmory.init.ModMaterials;
 import com.jahirtrap.critterarmory.init.ModTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -15,7 +14,6 @@ public class CritterArmoryMod {
 
     public CritterArmoryMod(IEventBus bus) {
         TXFConfig.init(MODID, ModConfig.class);
-        ModMaterials.init(bus);
         ModContent.init(bus);
         ModTab.init(bus);
     }

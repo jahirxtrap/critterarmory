@@ -7,14 +7,14 @@
   ],
   "key": {
     "I": {
-      "tag": "c:ingots/gold"
+      "tag": "c:gold_ingots"
     },
     "A": {
       "item": "minecraft:leather"
     }
   },
   "result": {
-    "id": "critterarmory:golden_cow_armor",
+    "item": "critterarmory:golden_cow_armor",
     "count": 1
   }
 }

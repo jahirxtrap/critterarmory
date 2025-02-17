@@ -4,10 +4,10 @@
     "item": "critterarmory:diamond_pig_armor"
   },
   "addition": {
-    "tag": "c:ingots/netherite"
+    "tag": "c:netherite_ingots"
   },
   "result": {
-    "id": "critterarmory:netherite_pig_armor"
+    "item": "critterarmory:netherite_pig_armor"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

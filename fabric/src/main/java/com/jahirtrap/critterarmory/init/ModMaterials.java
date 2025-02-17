@@ -1,51 +1,89 @@
 package com.jahirtrap.critterarmory.init;
 
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
+import com.jahirtrap.critterarmory.util.AnimalMaterial;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
-public class ModMaterials {
-    public static final Map.Entry<Holder<ArmorMaterial>, String> IRON = copy(ArmorMaterials.IRON);
-    public static final Map.Entry<Holder<ArmorMaterial>, String> GOLD = copy(ArmorMaterials.GOLD, "golden");
-    public static final Map.Entry<Holder<ArmorMaterial>, String> DIAMOND = copy(ArmorMaterials.DIAMOND);
-    public static final Map.Entry<Holder<ArmorMaterial>, String> NETHERITE = copy(ArmorMaterials.NETHERITE);
+public enum ModMaterials implements AnimalMaterial {
+    IRON(ArmorMaterials.IRON, "iron", 15, 5),
+    GOLD(ArmorMaterials.GOLD, "golden", 7, 7),
+    DIAMOND(ArmorMaterials.DIAMOND, "diamond", 33, 11),
+    NETHERITE(ArmorMaterials.NETHERITE, "netherite", 37, 11);
 
-    private static EnumMap<Type, Integer> createMap(int[] values) {
-        EnumMap<Type, Integer> enumMap = new EnumMap<>(Type.class);
-        for (int i = 0; i < values.length; i++) enumMap.put(Type.values()[i], values[i]);
-        return enumMap;
+    private final String name;
+    private final ResourceLocation location;
+    private final int durabilityMultiplier;
+    private final int defense;
+    private final int enchantmentValue;
+    private final SoundEvent sound;
+    private final float toughness;
+    private final float knockbackResistance;
+    private final Supplier<Ingredient> ingredient;
+
+    ModMaterials(String name, int durabilityMultiplier, int defense, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> ingredient) {
+        this.name = name;
+        this.location = new ResourceLocation(MODID, name);
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.defense = defense;
+        this.enchantmentValue = enchantmentValue;
+        this.sound = sound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.ingredient = ingredient;
     }
 
-    private static Map.Entry<Holder<ArmorMaterial>, String> copy(Holder<ArmorMaterial> material) {
-        var value = material.value();
-        return register(material.getRegisteredName().substring(material.getRegisteredName().indexOf(ResourceLocation.NAMESPACE_SEPARATOR) + 1), (EnumMap<Type, Integer>) value.defense(), value.enchantmentValue(), value.equipSound(), value.toughness(), value.knockbackResistance(), value.repairIngredient());
+    ModMaterials(ArmorMaterial material, String name, int durabilityMultiplier, int defense) {
+        this.name = name;
+        this.location = new ResourceLocation(MODID, material.getName());
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.defense = defense;
+        this.enchantmentValue = material.getEnchantmentValue();
+        this.sound = material.getEquipSound();
+        this.toughness = material.getToughness();
+        this.knockbackResistance = material.getKnockbackResistance();
+        this.ingredient = material::getRepairIngredient;
     }
 
-    private static Map.Entry<Holder<ArmorMaterial>, String> copy(Holder<ArmorMaterial> material, String name) {
-        return register(copy(material).getKey(), name);
+    public int getDurability() {
+        return durabilityMultiplier * 15;
     }
 
-    private static Map.Entry<Holder<ArmorMaterial>, String> register(String name, EnumMap<Type, Integer> defense, int i, Holder<SoundEvent> holder, float f, float g, Supplier<Ingredient> supplier) {
-        return Map.entry(Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, new ResourceLocation(MODID, name), new ArmorMaterial(defense, i, holder, supplier, List.of(new ArmorMaterial.Layer(new ResourceLocation(MODID, name))), f, g)), name);
+    public int getDefense() {
+        return defense;
     }
 
-    private static Map.Entry<Holder<ArmorMaterial>, String> register(Holder<ArmorMaterial> material, String name) {
-        return Map.entry(material, name);
+    public int getEnchantmentValue() {
+        return enchantmentValue;
     }
 
-    public static void init() {
+    public SoundEvent getEquipSound() {
+        return sound;
+    }
+
+    public Ingredient getRepairIngredient() {
+        return ingredient.get();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ResourceLocation getLocation() {
+        return location;
+    }
+
+    public float getToughness() {
+        return toughness;
+    }
+
+    public float getKnockbackResistance() {
+        return knockbackResistance;
     }
 }

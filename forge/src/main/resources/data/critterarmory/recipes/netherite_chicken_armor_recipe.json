@@ -7,7 +7,7 @@
     "tag": "forge:ingots/netherite"
   },
   "result": {
-    "id": "critterarmory:netherite_chicken_armor"
+    "item": "critterarmory:netherite_chicken_armor"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

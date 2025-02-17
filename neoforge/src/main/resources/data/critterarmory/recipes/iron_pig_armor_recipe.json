@@ -7,14 +7,14 @@
   ],
   "key": {
     "I": {
-      "tag": "c:ingots/iron"
+      "tag": "forge:ingots/iron"
     },
     "A": {
       "item": "minecraft:carrot"
     }
   },
   "result": {
-    "id": "critterarmory:iron_pig_armor",
+    "item": "critterarmory:iron_pig_armor",
     "count": 1
   }
 }

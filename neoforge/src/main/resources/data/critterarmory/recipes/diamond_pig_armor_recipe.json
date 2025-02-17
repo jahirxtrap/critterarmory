@@ -7,14 +7,14 @@
   ],
   "key": {
     "G": {
-      "tag": "c:gems/diamond"
+      "tag": "forge:gems/diamond"
     },
     "A": {
       "item": "minecraft:carrot"
     }
   },
   "result": {
-    "id": "critterarmory:diamond_pig_armor",
+    "item": "critterarmory:diamond_pig_armor",
     "count": 1
   }
 }

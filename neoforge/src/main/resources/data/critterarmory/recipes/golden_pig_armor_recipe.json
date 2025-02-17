@@ -7,14 +7,14 @@
   ],
   "key": {
     "I": {
-      "tag": "c:ingots/gold"
+      "tag": "forge:ingots/gold"
     },
     "A": {
       "item": "minecraft:carrot"
     }
   },
   "result": {
-    "id": "critterarmory:golden_pig_armor",
+    "item": "critterarmory:golden_pig_armor",
     "count": 1
   }
 }

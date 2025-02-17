@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,12 +27,12 @@ public class PigArmorLayer extends RenderLayer<Pig, PigModel<Pig>> {
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, Pig entity, float f, float g, float h, float j, float k, float l) {
-        ItemStack stack = entity.getBodyArmorItem();
+        ItemStack stack = entity.getItemBySlot(EquipmentSlot.CHEST);
         if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem) {
             this.getParentModel().copyPropertiesTo(this.model);
             this.model.prepareMobModel(entity, f, g, h);
             this.model.setupAnim(entity, f, g, j, k, l);
-            renderArmor(new ResourceLocation(animalArmorItem.getMaterial().getRegisteredName()), model, stack, poseStack, bufferSource, i);
+            renderArmor(animalArmorItem.getMaterial().getLocation(), model, stack, poseStack, bufferSource, i);
         }
     }
 }

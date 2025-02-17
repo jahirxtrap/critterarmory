@@ -11,10 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -25,6 +22,7 @@ public class CommonUtils {
     private static final Map<TagKey<Item>, String> entityArmorMap = new HashMap<>();
 
     static {
+        addArmorType(ModTags.Items.WOLF_ARMOR, "wolf_body");
         addArmorType(ModTags.Items.CHICKEN_ARMOR, "chicken_body");
         addArmorType(ModTags.Items.COW_ARMOR, "cow_body");
         addArmorType(ModTags.Items.PIG_ARMOR, "pig_body");
@@ -40,7 +38,7 @@ public class CommonUtils {
     }
 
     public static void renderArmor(ResourceLocation location, Model model, ItemStack stack, PoseStack poseStack, MultiBufferSource bufferSource, int i) {
-        if (!ModConfig.renderArmors || (!ModConfig.renderChickenArmors && stack.is(ModTags.Items.CHICKEN_ARMOR)) || (!ModConfig.renderCowArmors && stack.is(ModTags.Items.COW_ARMOR)) || (!ModConfig.renderPigArmors && stack.is(ModTags.Items.PIG_ARMOR)) || (!ModConfig.renderSheepArmors && stack.is(ModTags.Items.SHEEP_ARMOR)))
+        if (!ModConfig.renderArmors || (!ModConfig.renderWolfArmors && stack.is(ModTags.Items.WOLF_ARMOR)) || (!ModConfig.renderChickenArmors && stack.is(ModTags.Items.CHICKEN_ARMOR)) || (!ModConfig.renderCowArmors && stack.is(ModTags.Items.COW_ARMOR)) || (!ModConfig.renderPigArmors && stack.is(ModTags.Items.PIG_ARMOR)) || (!ModConfig.renderSheepArmors && stack.is(ModTags.Items.SHEEP_ARMOR)))
             return;
         String type = getArmorType(stack);
         if (!type.isBlank()) {
@@ -50,6 +48,6 @@ public class CommonUtils {
     }
 
     public static boolean canWearArmor(LivingEntity entity) {
-        return (entity instanceof Chicken || entity instanceof Cow || entity instanceof Pig || entity instanceof Sheep);
+        return (entity instanceof Wolf || entity instanceof Chicken || entity instanceof Cow || entity instanceof Pig || entity instanceof Sheep);
     }
 }
