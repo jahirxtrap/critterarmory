@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GAG",
+    "GGG",
+    "GAG"
+  ],
+  "key": {
+    "G": {
+      "tag": "c:diamonds"
+    },
+    "A": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "critterarmory:diamond_wolf_armor",
+    "count": 1
+  }
+}

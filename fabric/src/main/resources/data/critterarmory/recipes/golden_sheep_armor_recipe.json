@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:gold_ingots"
+    },
+    "A": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "critterarmory:golden_sheep_armor",
+    "count": 1
+  }
+}
