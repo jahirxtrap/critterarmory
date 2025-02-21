@@ -1,1 +1,1 @@
-- Some fixes
+- Added wolf armor models
