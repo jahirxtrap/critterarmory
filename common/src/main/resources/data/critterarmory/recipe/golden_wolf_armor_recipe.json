@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/gold"
+    },
+    "A": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "id": "critterarmory:golden_wolf_armor",
+    "count": 1
+  }
+}
