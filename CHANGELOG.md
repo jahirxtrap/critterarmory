@@ -1,1 +1,1 @@
-- Added wolf armor models
+- Updated wolf armor item textures
