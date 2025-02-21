@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": "#c:ingots/iron",
+    "A": "#minecraft:wool"
+  },
+  "result": {
+    "id": "critterarmory:iron_sheep_armor",
+    "count": 1
+  }
+}
