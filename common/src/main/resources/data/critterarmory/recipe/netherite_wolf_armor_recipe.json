@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "critterarmory:diamond_wolf_armor",
+  "addition": "#c:ingots/netherite",
+  "result": {
+    "id": "critterarmory:netherite_wolf_armor"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}
