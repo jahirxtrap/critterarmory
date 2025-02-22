@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Shearable;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -52,7 +53,7 @@ public abstract class AnimalMixin {
                     entity.setBodyArmorItem(stack.copyWithCount(1));
                     stack.consume(1, player);
                     cir.setReturnValue(InteractionResult.SUCCESS);
-                } else if ((stack.getItem() instanceof ShearsItem || stack.canPerformAction(ItemAbilities.SHEARS_REMOVE_ARMOR)) && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.has(entity.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative())) {
+                } else if (shearable() && (stack.getItem() instanceof ShearsItem || stack.canPerformAction(ItemAbilities.SHEARS_REMOVE_ARMOR)) && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.has(entity.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative())) {
                     stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                     entity.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                     ItemStack armor = entity.getBodyArmorItem();
@@ -70,5 +71,12 @@ public abstract class AnimalMixin {
         if (entity.canUseSlot(slot) && stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
             return animalArmorItem.getType().getSlot() == slot && animalArmorItem.getAllowedEntities().contains(entity.getType().builtInRegistryHolder());
         else return false;
+    }
+
+    @Unique
+    private boolean shearable() {
+        var entity = (Animal) (Object) this;
+        if (entity instanceof Shearable shearable) return !shearable.readyForShearing();
+        else return true;
     }
 }
