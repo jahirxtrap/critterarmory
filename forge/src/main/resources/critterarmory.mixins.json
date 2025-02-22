@@ -7,6 +7,7 @@
     "AnimalMixin",
     "MobMixin",
     "MushroomCowMixin",
+    "SheepMixin",
     "WolfMixin"
   ],
   "client": [
