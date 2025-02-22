@@ -1,1 +1,1 @@
-- Updated wolf armor item textures
+- Some fixes

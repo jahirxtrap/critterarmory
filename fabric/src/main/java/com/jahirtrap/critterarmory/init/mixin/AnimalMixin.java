@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Shearable;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -64,7 +65,7 @@ public abstract class AnimalMixin {
                         entity.playSound(animalArmorItem.getMaterial().getEquipSound());
                     if (!player.getAbilities().instabuild) stack.shrink(1);
                     cir.setReturnValue(InteractionResult.SUCCESS);
-                } else if (stack.getItem() instanceof ShearsItem && entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.hasBindingCurse(entity.getItemBySlot(EquipmentSlot.CHEST)) && !player.isCreative())) {
+                } else if (shearable() && stack.getItem() instanceof ShearsItem && entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.hasBindingCurse(entity.getItemBySlot(EquipmentSlot.CHEST)) && !player.isCreative())) {
                     stack.hurtAndBreak(1, player, a -> a.broadcastBreakEvent(hand));
                     entity.playSound(SoundEvents.SHEEP_SHEAR);
                     ItemStack armor = entity.getItemBySlot(EquipmentSlot.CHEST);
@@ -82,6 +83,13 @@ public abstract class AnimalMixin {
         if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
             return animalArmorItem.getAllowedEntities().contains(entity.getType().builtInRegistryHolder());
         else return false;
+    }
+
+    @Unique
+    private boolean shearable() {
+        var entity = (Animal) (Object) this;
+        if (entity instanceof Shearable shearable) return !shearable.readyForShearing();
+        else return true;
     }
 
     @Unique

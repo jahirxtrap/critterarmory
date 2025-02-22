@@ -13,10 +13,10 @@ import java.util.function.Supplier;
 import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public enum ModMaterials implements AnimalMaterial {
-    IRON(ArmorMaterials.IRON, "iron"),
-    GOLD(ArmorMaterials.GOLD, "golden"),
-    DIAMOND(ArmorMaterials.DIAMOND, "diamond"),
-    NETHERITE(ArmorMaterials.NETHERITE, "netherite");
+    IRON(ArmorMaterials.IRON, "iron", 5),
+    GOLD(ArmorMaterials.GOLD, "golden", 7),
+    DIAMOND(ArmorMaterials.DIAMOND, "diamond", 11),
+    NETHERITE(ArmorMaterials.NETHERITE, "netherite", 11);
 
     private final String name;
     private final ResourceLocation location;
@@ -40,11 +40,11 @@ public enum ModMaterials implements AnimalMaterial {
         this.ingredient = ingredient;
     }
 
-    ModMaterials(ArmorMaterial material, String name) {
+    ModMaterials(ArmorMaterial material, String name, int defense) {
         this.name = name;
         this.location = new ResourceLocation(MODID, material.getName());
         this.durability = material.getDurabilityForSlot(EquipmentSlot.CHEST);
-        this.defense = material.getDefenseForSlot(EquipmentSlot.CHEST);
+        this.defense = defense;
         this.enchantmentValue = material.getEnchantmentValue();
         this.sound = material.getEquipSound();
         this.toughness = material.getToughness();
