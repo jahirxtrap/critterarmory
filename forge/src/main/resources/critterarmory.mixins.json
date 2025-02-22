@@ -6,7 +6,8 @@
   "mixins": [
     "AnimalMixin",
     "MobMixin",
-    "MushroomCowMixin"
+    "MushroomCowMixin",
+    "SheepMixin"
   ],
   "client": [
     "ChickenRendererMixin",
