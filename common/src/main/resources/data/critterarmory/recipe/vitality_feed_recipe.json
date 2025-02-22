@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "critterarmory:balanced_feed",
     "minecraft:golden_apple",
