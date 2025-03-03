@@ -17,6 +17,7 @@
     "MushroomCowRendererMixin",
     "PigRendererMixin",
     "SheepRendererMixin",
+    "WolfCollarLayerMixin",
     "WolfRendererMixin"
   ],
   "injectors": {
