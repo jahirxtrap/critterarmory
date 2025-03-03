@@ -22,7 +22,5 @@
   "item.critterarmory.netherite_sheep_armor": "Netherite Sheep Armor",
   "item.critterarmory.balanced_feed": "Balanced Feed",
   "item.critterarmory.vitality_feed": "Vitality Feed",
-  "itemGroup.critterarmory.tab_critterarmory": "Critter Armory",
-  "critterarmory.config.title": "Critter Armory",
-  "critterarmory.config.armors": "Armors"
+  "itemGroup.critterarmory.tab_critterarmory": "Critter Armory"
 }
