@@ -16,7 +16,8 @@
     "LayerDefinitionsMixin",
     "MushroomCowRendererMixin",
     "PigRendererMixin",
-    "SheepRendererMixin"
+    "SheepRendererMixin",
+    "WolfCollarLayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
