@@ -18,7 +18,8 @@
     "MushroomCowRendererMixin",
     "PigRendererMixin",
     "SheepRendererMixin",
-    "WolfArmorLayerMixin"
+    "WolfArmorLayerMixin",
+    "WolfCollarLayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
