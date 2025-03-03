@@ -1,1 +1,2 @@
-- Some fixes
+- `modernWolfCollar` config option
+- Updated config lib
