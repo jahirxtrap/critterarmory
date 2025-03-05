@@ -1,2 +1,1 @@
-- `modernWolfCollar` config option
-- Updated config lib
+- Added Portuguese translations ([Issue #3](https://github.com/jahirxtrap/critterarmory/issues/3))
