@@ -55,8 +55,8 @@ public class BaseAnimalArmorItem {
         PIG(SoundEvents.ITEM_BREAK, EntityType.PIG),
         SHEEP(SoundEvents.ITEM_BREAK, EntityType.SHEEP);
 
-        final SoundEvent breakingSound;
-        final HolderSet<EntityType<?>> allowedEntities;
+        public final SoundEvent breakingSound;
+        public final HolderSet<EntityType<?>> allowedEntities;
 
         BodyType(final SoundEvent soundEvent, final EntityType<?>... entityTypes) {
             this.breakingSound = soundEvent;

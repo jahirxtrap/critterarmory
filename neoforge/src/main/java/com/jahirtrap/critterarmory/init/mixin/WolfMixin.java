@@ -18,7 +18,7 @@ public abstract class WolfMixin {
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         var entity = (Wolf) (Object) this;
-        ItemStack stack = player.getItemInHand(hand);
+        var stack = player.getItemInHand(hand);
         if (entity.isTame() && isBodyArmorItem(stack) && entity.isOwnedBy(player) && !entity.isWearingBodyArmor() && !entity.isBaby()) {
             entity.setBodyArmorItem(stack.copyWithCount(1));
             stack.consume(1, player);
