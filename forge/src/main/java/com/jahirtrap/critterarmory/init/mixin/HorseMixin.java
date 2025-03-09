@@ -1,17 +1,24 @@
 package com.jahirtrap.critterarmory.init.mixin;
 
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
+
+import static com.jahirtrap.critterarmory.util.CommonUtils.feedEntity;
 
 @Mixin(Horse.class)
 public abstract class HorseMixin {
@@ -20,6 +27,13 @@ public abstract class HorseMixin {
     private static final UUID ARMOR_TOUGHNESS_MODIFIER_UUID = UUID.fromString("5D6F0BA2-1186-46AC-B896-C61C5CEE99CC");
     @Unique
     private static final UUID KNOCKBACK_RESISTANCE_MODIFIER_UUID = UUID.fromString("7107DE5E-7CE8-4030-940E-514C1F160890");
+
+    @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
+    public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
+        var entity = (Horse) (Object) this;
+        if (entity.getType() == EntityType.HORSE && !entity.isVehicle() && entity.isTamed() && !player.isSecondaryUseActive() && feedEntity(player, hand, entity))
+            cir.setReturnValue(InteractionResult.SUCCESS);
+    }
 
     @Inject(method = "setArmorEquipment", at = @At("TAIL"))
     private void setArmorEquipment(ItemStack stack, CallbackInfo ci) {
