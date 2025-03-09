@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AnimalMixin",
+    "HorseMixin",
     "MobMixin",
     "MushroomCowMixin",
     "SheepMixin",

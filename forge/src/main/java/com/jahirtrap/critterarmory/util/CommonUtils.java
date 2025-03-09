@@ -1,7 +1,9 @@
 package com.jahirtrap.critterarmory.util;
 
 import com.jahirtrap.critterarmory.init.ModConfig;
+import com.jahirtrap.critterarmory.init.ModContent;
 import com.jahirtrap.critterarmory.init.ModTags;
+import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.Model;
@@ -9,15 +11,18 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +54,35 @@ public class CommonUtils {
         }
     }
 
+    public static boolean feedEntity(Player player, InteractionHand hand, Animal entity) {
+        if (!entity.level().isClientSide()) {
+            var stack = player.getItemInHand(hand);
+            if (stack.is(ModContent.BALANCED_FEED.get()) && entity.getHealth() < entity.getMaxHealth()) {
+                entity.usePlayerItem(player, hand, stack);
+                entity.heal(ModConfig.healAmount);
+                return true;
+            } else if (stack.is(ModContent.VITALITY_FEED.get())) {
+                int healthLimit = ModConfig.healthIncreaseLimit;
+                if (entity.getMaxHealth() < healthLimit || entity.getHealth() < entity.getMaxHealth()) {
+                    entity.usePlayerItem(player, hand, stack);
+                    if (entity.getMaxHealth() < healthLimit) {
+                        entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Math.min(entity.getMaxHealth() + ModConfig.healthIncreaseAmount, healthLimit));
+                        entity.playSound(SoundEvents.PLAYER_LEVELUP);
+                    }
+                    entity.setHealth(entity.getMaxHealth());
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static boolean canWearArmor(LivingEntity entity) {
-        return (entity instanceof Chicken || entity instanceof Cow || entity instanceof Pig || entity instanceof Sheep);
+        return Arrays.stream(BaseAnimalArmorItem.BodyType.values()).flatMap(bodyType -> bodyType.allowedEntities.stream()).anyMatch(holder -> holder.value() == entity.getType());
+    }
+
+    public static boolean canFeed(LivingEntity entity) {
+        return entity.getType() == EntityType.WOLF || canWearArmor(entity);
     }
 }
