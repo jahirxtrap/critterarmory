@@ -1,7 +1,5 @@
 package com.jahirtrap.critterarmory.init.mixin;
 
-import com.jahirtrap.critterarmory.init.ModConfig;
-import com.jahirtrap.critterarmory.init.ModContent;
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -24,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
 
-import static com.jahirtrap.critterarmory.util.CommonUtils.canWearArmor;
+import static com.jahirtrap.critterarmory.util.CommonUtils.*;
 
 @Mixin(Animal.class)
 public abstract class AnimalMixin {
@@ -39,40 +37,26 @@ public abstract class AnimalMixin {
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         var entity = (Animal) (Object) this;
-        if (canWearArmor(entity) && tamable(player)) {
-            ItemStack stack = player.getItemInHand(hand);
-            if (stack.is(ModContent.BALANCED_FEED) && entity.getHealth() < entity.getMaxHealth()) {
-                entity.usePlayerItem(player, hand, stack);
-                entity.heal(ModConfig.healAmount);
+        var stack = player.getItemInHand(hand);
+        if (canFeed(entity) && tamable(player) && feedEntity(player, hand, entity))
+            cir.setReturnValue(InteractionResult.SUCCESS);
+
+        if (canWearArmor(entity)) {
+            if (isEquippable(stack) && entity.getItemBySlot(EquipmentSlot.CHEST).isEmpty() && !entity.isBaby()) {
+                ItemStack armor = stack.copy();
+                armor.setCount(1);
+                setArmorEquipment(armor);
+                if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
+                    entity.playSound(animalArmorItem.getMaterial().getEquipSound());
+                if (!player.getAbilities().instabuild) stack.shrink(1);
                 cir.setReturnValue(InteractionResult.SUCCESS);
-            } else if (!entity.getLevel().isClientSide() && stack.is(ModContent.VITALITY_FEED)) {
-                int healthLimit = ModConfig.healthIncreaseLimit;
-                if (entity.getMaxHealth() < healthLimit || entity.getHealth() < entity.getMaxHealth()) {
-                    entity.usePlayerItem(player, hand, stack);
-                    if (entity.getMaxHealth() < healthLimit) {
-                        entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Math.min(entity.getMaxHealth() + ModConfig.healthIncreaseAmount, healthLimit));
-                        entity.playSound(SoundEvents.PLAYER_LEVELUP);
-                    }
-                    entity.setHealth(entity.getMaxHealth());
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                }
-            } else {
-                if (isEquippable(stack) && entity.getItemBySlot(EquipmentSlot.CHEST).isEmpty() && !entity.isBaby()) {
-                    ItemStack armor = stack.copy();
-                    armor.setCount(1);
-                    setArmorEquipment(armor);
-                    if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
-                        entity.playSound(animalArmorItem.getMaterial().getEquipSound());
-                    if (!player.getAbilities().instabuild) stack.shrink(1);
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                } else if (shearable() && stack.getItem() instanceof ShearsItem && entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.hasBindingCurse(entity.getItemBySlot(EquipmentSlot.CHEST)) && !player.isCreative())) {
-                    stack.hurtAndBreak(1, player, a -> a.broadcastBreakEvent(hand));
-                    entity.playSound(SoundEvents.SHEEP_SHEAR);
-                    ItemStack armor = entity.getItemBySlot(EquipmentSlot.CHEST);
-                    setArmorEquipment(ItemStack.EMPTY);
-                    entity.spawnAtLocation(armor);
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                }
+            } else if (shearable() && stack.getItem() instanceof ShearsItem && entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.hasBindingCurse(entity.getItemBySlot(EquipmentSlot.CHEST)) && !player.isCreative())) {
+                stack.hurtAndBreak(1, player, a -> a.broadcastBreakEvent(hand));
+                entity.playSound(SoundEvents.SHEEP_SHEAR);
+                ItemStack armor = entity.getItemBySlot(EquipmentSlot.CHEST);
+                setArmorEquipment(ItemStack.EMPTY);
+                entity.spawnAtLocation(armor);
+                cir.setReturnValue(InteractionResult.SUCCESS);
             }
         }
     }
@@ -80,23 +64,17 @@ public abstract class AnimalMixin {
     @Unique
     private boolean isEquippable(ItemStack stack) {
         var entity = (Animal) (Object) this;
-        if (stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem)
-            return animalArmorItem.getAllowedEntities().contains(entity.getType().builtInRegistryHolder());
-        else return false;
+        return stack.getItem() instanceof BaseAnimalArmorItem.Modded animalArmorItem && animalArmorItem.getAllowedEntities().contains(entity.getType().builtInRegistryHolder());
     }
 
     @Unique
     private boolean shearable() {
-        var entity = (Animal) (Object) this;
-        if (entity instanceof Shearable shearable) return !shearable.readyForShearing();
-        else return true;
+        return !((Animal) (Object) this instanceof Shearable shearable) || !shearable.readyForShearing();
     }
 
     @Unique
     private boolean tamable(Player player) {
-        var entity = (Animal) (Object) this;
-        if (entity instanceof TamableAnimal tamable) return tamable.isTame() && tamable.isOwnedBy(player);
-        else return true;
+        return !((Animal) (Object) this instanceof TamableAnimal tamable) || tamable.isTame() && tamable.isOwnedBy(player);
     }
 
     @Unique

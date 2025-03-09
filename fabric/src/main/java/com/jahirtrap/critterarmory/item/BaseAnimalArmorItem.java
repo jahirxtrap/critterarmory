@@ -61,7 +61,7 @@ public class BaseAnimalArmorItem {
         PIG(EntityType.PIG),
         SHEEP(EntityType.SHEEP);
 
-        final HolderSet<EntityType<?>> allowedEntities;
+        public final HolderSet<EntityType<?>> allowedEntities;
 
         BodyType(final EntityType<?>... entityTypes) {
             this.allowedEntities = HolderSet.direct(EntityType::builtInRegistryHolder, entityTypes);
