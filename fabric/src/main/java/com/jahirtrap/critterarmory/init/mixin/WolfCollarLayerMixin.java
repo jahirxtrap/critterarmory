@@ -20,7 +20,8 @@ public abstract class WolfCollarLayerMixin {
 
     @Redirect(method = "render*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/layers/WolfCollarLayer;WOLF_COLLAR_LOCATION:Lnet/minecraft/resources/ResourceLocation;"))
     private ResourceLocation redirectWolfCollarTexture() {
-        if (!ModConfig.modernWolfCollar) return ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/wolf/wolf_collar.png");
+        if (!ModConfig.modernWolfCollar)
+            return ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/wolf/wolf_collar.png");
         else return WOLF_COLLAR_LOCATION;
     }
 }

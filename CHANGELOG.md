@@ -1,1 +1,1 @@
-- Added Portuguese translations ([Issue #3](https://github.com/jahirxtrap/critterarmory/issues/3))
+- Improved armor and feeding interactions
