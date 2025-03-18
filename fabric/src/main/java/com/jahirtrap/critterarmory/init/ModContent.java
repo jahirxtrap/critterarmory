@@ -38,6 +38,7 @@ public class ModContent {
         if (entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey())
             items.add(registerItem(entry.getValue() + "_horse_armor", (p) -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.EQUESTRIAN, p), itemProp));
         items.add(registerItem(entry.getValue() + "_wolf_armor", (p) -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.CANINE, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_cat_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.CAT, p), itemProp));
         items.add(registerItem(entry.getValue() + "_chicken_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.CHICKEN, p), itemProp));
         items.add(registerItem(entry.getValue() + "_cow_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.COW, p), itemProp));
         items.add(registerItem(entry.getValue() + "_pig_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.PIG, p), itemProp));

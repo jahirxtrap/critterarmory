@@ -1,5 +1,7 @@
 package com.jahirtrap.critterarmory.init;
 
+import net.minecraft.client.model.CatModel;
+import net.minecraft.client.model.FelineModel;
 import net.minecraft.client.model.PigModel;
 import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,6 +12,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModLayerDefinitions {
     private static final CubeDeformation cubeDeformation = new CubeDeformation(0.2f);
+
+    public static LayerDefinition CatArmor() {
+        return LayerDefinition.create(FelineModel.createBodyMesh(cubeDeformation), 64, 32).apply(CatModel.CAT_TRANSFORMER);
+    }
 
     public static LayerDefinition ChickenArmor() {
         MeshDefinition meshDefinition = new MeshDefinition();

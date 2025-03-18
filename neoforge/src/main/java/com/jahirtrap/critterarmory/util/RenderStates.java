@@ -7,6 +7,14 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class RenderStates {
+    public static class Cat extends CatRenderState {
+        public ItemStack bodyArmorItem;
+
+        public Cat() {
+            this.bodyArmorItem = ItemStack.EMPTY;
+        }
+    }
+
     public static class Chicken extends ChickenRenderState {
         public ItemStack bodyArmorItem;
 

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "critterarmory:diamond_cat_armor",
+  "addition": "#c:ingots/netherite",
+  "result": {
+    "id": "critterarmory:netherite_cat_armor"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}
