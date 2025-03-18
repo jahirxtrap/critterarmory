@@ -1,1 +1,1 @@
-- Added Russian translations ([Pull request #4](https://github.com/jahirxtrap/critterarmory/pull/4))
+- Added cat armor

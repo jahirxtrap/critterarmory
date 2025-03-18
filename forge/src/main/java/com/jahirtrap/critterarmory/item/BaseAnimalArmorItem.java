@@ -56,6 +56,7 @@ public class BaseAnimalArmorItem {
 
     public enum BodyType {
         CANINE(EntityType.WOLF),
+        CAT(EntityType.CAT),
         CHICKEN(EntityType.CHICKEN),
         COW(EntityType.COW, EntityType.MOOSHROOM),
         PIG(EntityType.PIG),
