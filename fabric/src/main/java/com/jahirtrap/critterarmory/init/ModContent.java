@@ -29,6 +29,7 @@ public class ModContent {
         if (material != ModMaterials.IRON && material != ModMaterials.GOLD && material != ModMaterials.DIAMOND)
             items.add(registerItem(material.getName() + "_horse_armor", new BaseAnimalArmorItem.Vanilla(material, itemProp)));
         items.add(registerItem(material.getName() + "_wolf_armor", new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.CANINE, itemProp)));
+        items.add(registerItem(material.getName() + "_cat_armor", new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.CAT, itemProp)));
         items.add(registerItem(material.getName() + "_chicken_armor", new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.CHICKEN, itemProp)));
         items.add(registerItem(material.getName() + "_cow_armor", new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.COW, itemProp)));
         items.add(registerItem(material.getName() + "_pig_armor", new BaseAnimalArmorItem.Modded(material, BaseAnimalArmorItem.BodyType.PIG, itemProp)));

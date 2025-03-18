@@ -17,6 +17,8 @@ public class ModConfig extends TXFConfig {
     public static boolean renderHorseArmors = true;
     @Entry(name = "Render Wolf Armors", itemDisplay = "critterarmory:netherite_wolf_armor")
     public static boolean renderWolfArmors = true;
+    @Entry(name = "Render Cat Armors", itemDisplay = "critterarmory:netherite_cat_armor")
+    public static boolean renderCatArmors = true;
     @Entry(name = "Render Chicken Armors", itemDisplay = "critterarmory:netherite_chicken_armor")
     public static boolean renderChickenArmors = true;
     @Entry(name = "Render Cow Armors", itemDisplay = "critterarmory:netherite_cow_armor")

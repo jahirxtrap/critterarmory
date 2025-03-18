@@ -30,6 +30,7 @@ public class CommonUtils {
 
     static {
         addArmorType(ModTags.Items.WOLF_ARMOR, "wolf_body");
+        addArmorType(ModTags.Items.CAT_ARMOR, "cat_body");
         addArmorType(ModTags.Items.CHICKEN_ARMOR, "chicken_body");
         addArmorType(ModTags.Items.COW_ARMOR, "cow_body");
         addArmorType(ModTags.Items.PIG_ARMOR, "pig_body");
@@ -45,7 +46,7 @@ public class CommonUtils {
     }
 
     public static void renderArmor(ResourceLocation location, Model model, ItemStack stack, PoseStack poseStack, MultiBufferSource bufferSource, int i) {
-        if (!ModConfig.renderArmors || (!ModConfig.renderWolfArmors && stack.is(ModTags.Items.WOLF_ARMOR)) || (!ModConfig.renderChickenArmors && stack.is(ModTags.Items.CHICKEN_ARMOR)) || (!ModConfig.renderCowArmors && stack.is(ModTags.Items.COW_ARMOR)) || (!ModConfig.renderPigArmors && stack.is(ModTags.Items.PIG_ARMOR)) || (!ModConfig.renderSheepArmors && stack.is(ModTags.Items.SHEEP_ARMOR)))
+        if (!ModConfig.renderArmors || (!ModConfig.renderWolfArmors && stack.is(ModTags.Items.WOLF_ARMOR)) || (!ModConfig.renderCatArmors && stack.is(ModTags.Items.CAT_ARMOR)) || (!ModConfig.renderChickenArmors && stack.is(ModTags.Items.CHICKEN_ARMOR)) || (!ModConfig.renderCowArmors && stack.is(ModTags.Items.COW_ARMOR)) || (!ModConfig.renderPigArmors && stack.is(ModTags.Items.PIG_ARMOR)) || (!ModConfig.renderSheepArmors && stack.is(ModTags.Items.SHEEP_ARMOR)))
             return;
         String type = getArmorType(stack);
         if (!type.isBlank()) {
