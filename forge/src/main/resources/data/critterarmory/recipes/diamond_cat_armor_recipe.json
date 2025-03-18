@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "GAG",
+    "GGG",
+    "GAG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:gems/diamond"
+    },
+    "A": {
+      "tag": "minecraft:fishes"
+    }
+  },
+  "result": {
+    "id": "critterarmory:diamond_cat_armor",
+    "count": 1
+  }
+}
