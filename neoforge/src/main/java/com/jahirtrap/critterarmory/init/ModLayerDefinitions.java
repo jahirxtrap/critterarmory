@@ -1,5 +1,6 @@
 package com.jahirtrap.critterarmory.init;
 
+import net.minecraft.client.model.CatModel;
 import net.minecraft.client.model.PigModel;
 import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.PartPose;
@@ -26,6 +27,10 @@ public class ModLayerDefinitions {
         PartDefinition partdefinition3 = partDefinition.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offsetAndRotation(-1, 12, 8, ((float) Math.PI / 5), 0, 0));
         partdefinition3.addOrReplaceChild("real_tail", CubeListBuilder.create().texOffs(9, 18).addBox(0, 0, -1, 2, 8, 2, cubeDeformation), PartPose.ZERO);
         return LayerDefinition.create(meshDefinition, 64, 32);
+    }
+
+    public static LayerDefinition CatArmor() {
+        return LayerDefinition.create(CatModel.createBodyMesh(cubeDeformation), 64, 32);
     }
 
     public static LayerDefinition ChickenArmor() {
