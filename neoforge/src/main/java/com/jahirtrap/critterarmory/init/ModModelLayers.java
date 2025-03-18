@@ -1,9 +1,6 @@
 package com.jahirtrap.critterarmory.init;
 
-import net.minecraft.client.model.ChickenModel;
-import net.minecraft.client.model.CowModel;
-import net.minecraft.client.model.PigModel;
-import net.minecraft.client.model.SheepModel;
+import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -20,6 +17,8 @@ import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 public class ModModelLayers {
     public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = new HashMap<>();
 
+    public static final ModelLayerLocation CAT_ARMOR = register("cat_armor", ModLayerDefinitions.CatArmor());
+    public static final ModelLayerLocation CAT_BABY_ARMOR = register("cat_baby_armor", ModLayerDefinitions.CatArmor().apply(CatModel.BABY_TRANSFORMER));
     public static final ModelLayerLocation CHICKEN_ARMOR = register("chicken_armor", ModLayerDefinitions.ChickenArmor());
     public static final ModelLayerLocation CHICKEN_BABY_ARMOR = register("chicken_baby_armor", ModLayerDefinitions.ChickenArmor().apply(ChickenModel.BABY_TRANSFORMER));
     public static final ModelLayerLocation COW_ARMOR = register("cow_armor", ModLayerDefinitions.CowArmor());

@@ -30,6 +30,7 @@ public class BaseAnimalArmorItem {
     }
 
     public enum BodyType {
+        CAT(SoundEvents.ITEM_BREAK, EntityType.CAT),
         CHICKEN(SoundEvents.ITEM_BREAK, EntityType.CHICKEN),
         COW(SoundEvents.ITEM_BREAK, EntityType.COW, EntityType.MOOSHROOM),
         PIG(SoundEvents.ITEM_BREAK, EntityType.PIG),

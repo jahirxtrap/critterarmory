@@ -11,6 +11,7 @@
     "SheepMixin"
   ],
   "client": [
+    "CatRendererMixin",
     "ChickenRendererMixin",
     "CowRendererMixin",
     "EquipmentLayerRendererMixin",
