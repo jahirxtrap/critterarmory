@@ -11,6 +11,7 @@ public class ModTags {
     public interface Items {
         TagKey<Item> HORSE_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "horse_armor"));
         TagKey<Item> WOLF_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "wolf_armor"));
+        TagKey<Item> CAT_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "cat_armor"));
         TagKey<Item> CHICKEN_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "chicken_armor"));
         TagKey<Item> COW_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "cow_armor"));
         TagKey<Item> PIG_ARMOR = create(ResourceLocation.fromNamespaceAndPath(MODID, "pig_armor"));

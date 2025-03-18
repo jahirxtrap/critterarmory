@@ -12,6 +12,7 @@
     "WolfMixin"
   ],
   "client": [
+    "CatRendererMixin",
     "ChickenRendererMixin",
     "CowRendererMixin",
     "HorseArmorLayerMixin",
