@@ -13,6 +13,6 @@ public abstract class MushroomCowMixin {
     @Inject(method = "readyForShearing", at = @At("HEAD"), cancellable = true)
     public void readyForShearing(CallbackInfoReturnable<Boolean> cir) {
         var entity = (MushroomCow) (Object) this;
-        if (entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem.Modded) cir.setReturnValue(false);
+        if (entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem) cir.setReturnValue(false);
     }
 }

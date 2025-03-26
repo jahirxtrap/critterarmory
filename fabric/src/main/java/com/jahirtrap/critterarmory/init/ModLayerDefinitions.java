@@ -35,14 +35,15 @@ public class ModLayerDefinitions {
     public static LayerDefinition CowArmor() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4, -4, -6, 8, 8, 6, cubeDeformation).texOffs(22, 0).addBox("right_horn", -5, -5, -4, 1, 3, 1, cubeDeformation).texOffs(22, 0).addBox("left_horn", 4, -5, -4, 1, 3, 1, cubeDeformation), PartPose.offset(0, 4, -8));
+        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4, -4, -6, 8, 8, 6, cubeDeformation).texOffs(1, 33).addBox(-3, 1, -7, 6, 3, 1, cubeDeformation).texOffs(22, 0).addBox("right_horn", -5, -5, -5, 1, 3, 1, cubeDeformation).texOffs(22, 0).addBox("left_horn", 4, -5, -5, 1, 3, 1, cubeDeformation), PartPose.offset(0, 4, -8));
         partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(18, 4).addBox(-6, -10, -7, 12, 18, 10, cubeDeformation).texOffs(52, 0).addBox(-2, 2, -8, 4, 6, 1, cubeDeformation), PartPose.offsetAndRotation(0, 5, 2, ((float) Math.PI / 2), 0, 0));
-        CubeListBuilder cubeListBuilder = CubeListBuilder.create().texOffs(0, 16).addBox(-2, 0, -2, 4, 12, 4, cubeDeformation);
-        partDefinition.addOrReplaceChild("right_hind_leg", cubeListBuilder, PartPose.offset(-4, 12, 7));
+        CubeListBuilder cubeListBuilder = CubeListBuilder.create().mirror().texOffs(0, 16).addBox(-2, 0, -2, 4, 12, 4, cubeDeformation);
+        CubeListBuilder cubeListBuilder2 = CubeListBuilder.create().texOffs(0, 16).addBox(-2, 0, -2, 4, 12, 4, cubeDeformation);
+        partDefinition.addOrReplaceChild("right_hind_leg", cubeListBuilder2, PartPose.offset(-4, 12, 7));
         partDefinition.addOrReplaceChild("left_hind_leg", cubeListBuilder, PartPose.offset(4, 12, 7));
-        partDefinition.addOrReplaceChild("right_front_leg", cubeListBuilder, PartPose.offset(-4, 12, -6));
-        partDefinition.addOrReplaceChild("left_front_leg", cubeListBuilder, PartPose.offset(4, 12, -6));
-        return LayerDefinition.create(meshDefinition, 64, 32);
+        partDefinition.addOrReplaceChild("right_front_leg", cubeListBuilder2, PartPose.offset(-4, 12, -5));
+        partDefinition.addOrReplaceChild("left_front_leg", cubeListBuilder, PartPose.offset(4, 12, -5));
+        return LayerDefinition.create(meshDefinition, 64, 64);
     }
 
     public static LayerDefinition PigArmor() {

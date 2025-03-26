@@ -5,7 +5,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.level.Level;
@@ -25,7 +25,7 @@ public abstract class SheepMixin extends Animal {
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         var entity = (Sheep) (Object) this;
         var stack = player.getItemInHand(hand);
-        if (stack.getItem() instanceof ShearsItem && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem.Modded && entity.isSheared())
+        if (stack.getItem() instanceof ShearsItem && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem && entity.isSheared())
             cir.setReturnValue(super.mobInteract(player, hand));
     }
 }

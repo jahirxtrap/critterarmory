@@ -38,7 +38,7 @@ public abstract class AnimalMixin {
                 entity.setBodyArmorItem(stack.copyWithCount(1));
                 stack.consume(1, player);
                 cir.setReturnValue(InteractionResult.SUCCESS);
-            } else if (shearable() && stack.getItem() instanceof ShearsItem && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem.Modded && !(EnchantmentHelper.has(entity.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative())) {
+            } else if (shearable() && stack.getItem() instanceof ShearsItem && entity.getBodyArmorItem().getItem() instanceof BaseAnimalArmorItem && !(EnchantmentHelper.has(entity.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative())) {
                 stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 entity.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                 ItemStack armor = entity.getBodyArmorItem();

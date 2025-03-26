@@ -6,7 +6,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 
@@ -36,13 +35,13 @@ public class ModContent {
     private static List<Item> registerMobArmors(Map.Entry<ArmorMaterial, String> entry, Item.Properties itemProp) {
         List<Item> items = new ArrayList<>();
         if (entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey())
-            items.add(registerItem(entry.getValue() + "_horse_armor", (p) -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.EQUESTRIAN, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_wolf_armor", (p) -> new BaseAnimalArmorItem.Vanilla(entry.getKey(), AnimalArmorItem.BodyType.CANINE, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_cat_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.CAT, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_chicken_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.CHICKEN, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_cow_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.COW, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_pig_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.PIG, p), itemProp));
-        items.add(registerItem(entry.getValue() + "_sheep_armor", (p) -> new BaseAnimalArmorItem.Modded(entry.getKey(), BaseAnimalArmorItem.BodyType.SHEEP, p), itemProp));
+            items.add(registerItem(entry.getValue() + "_horse_armor", (p) -> new Item(p.horseArmor(entry.getKey())), itemProp));
+        items.add(registerItem(entry.getValue() + "_wolf_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CANINE, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_cat_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CAT, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_chicken_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CHICKEN, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_cow_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.COW, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_pig_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.PIG, p), itemProp));
+        items.add(registerItem(entry.getValue() + "_sheep_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.SHEEP, p), itemProp));
         return items;
     }
 
