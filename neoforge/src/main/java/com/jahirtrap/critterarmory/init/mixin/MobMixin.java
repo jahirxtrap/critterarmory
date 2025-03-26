@@ -14,6 +14,6 @@ public abstract class MobMixin {
 
     @Inject(method = "canUseSlot", at = @At("HEAD"), cancellable = true)
     public void canUseSlot(EquipmentSlot slot, CallbackInfoReturnable<Boolean> cir) {
-        if (canWearArmor((Mob) (Object) this)) cir.setReturnValue(true);
+        if (canWearArmor((Mob) (Object) this) && slot == EquipmentSlot.BODY) cir.setReturnValue(true);
     }
 }
