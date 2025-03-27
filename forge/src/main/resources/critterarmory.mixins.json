@@ -6,7 +6,7 @@
   "mixins": [
     "AnimalMixin",
     "HorseMixin",
-    "MobMixin",
+    "LivingEntityMixin",
     "MushroomCowMixin",
     "SheepMixin"
   ],

@@ -23,7 +23,7 @@ public class RenderStates {
         }
     }
 
-    public static class Cow extends LivingEntityRenderState {
+    public static class Cow extends CowRenderState {
         public ItemStack bodyArmorItem;
 
         public Cow() {
