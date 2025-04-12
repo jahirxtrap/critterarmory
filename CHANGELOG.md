@@ -1,1 +1,1 @@
-- Added cat armor
+- Updated config lib
