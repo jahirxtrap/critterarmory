@@ -1,1 +1,1 @@
-- Updated config lib
+- Fixed wolf armor bug
