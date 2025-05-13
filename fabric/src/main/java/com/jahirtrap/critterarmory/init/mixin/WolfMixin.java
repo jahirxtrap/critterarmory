@@ -3,6 +3,7 @@ package com.jahirtrap.critterarmory.init.mixin;
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AnimalArmorItem;
@@ -30,6 +31,12 @@ public abstract class WolfMixin {
     public void hasArmor(CallbackInfoReturnable<Boolean> cir) {
         var entity = (Wolf) (Object) this;
         if (isBodyArmorItem(entity.getBodyArmorItem())) cir.setReturnValue(true);
+    }
+
+    @Inject(method = "canArmorAbsorb", at = @At("HEAD"), cancellable = true)
+    public void canArmorAbsorb(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
+        var entity = (Wolf) (Object) this;
+        if (isBodyArmorItem(entity.getBodyArmorItem())) cir.setReturnValue(false);
     }
 
     @Unique
