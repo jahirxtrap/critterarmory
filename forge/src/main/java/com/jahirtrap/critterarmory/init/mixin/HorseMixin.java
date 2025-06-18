@@ -31,7 +31,7 @@ public abstract class HorseMixin {
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         var entity = (Horse) (Object) this;
-        if (entity.getType() == EntityType.HORSE && !entity.isVehicle() && entity.isTamed() && !player.isSecondaryUseActive() && feedEntity(player, hand, entity))
+        if (entity.getType() == EntityType.HORSE && !entity.isVehicle() && entity.isTamed() && entity.getOwnerUUID() == player.getUUID() && !player.isSecondaryUseActive() && feedEntity(player, hand, entity))
             cir.setReturnValue(InteractionResult.SUCCESS);
     }
 
