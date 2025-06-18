@@ -51,7 +51,7 @@ public class ModLayerDefinitions {
     }
 
     public static LayerDefinition SheepArmor() {
-        MeshDefinition meshDefinition = QuadrupedModel.createBodyMesh(12, cubeDeformation);
+        MeshDefinition meshDefinition = QuadrupedModel.createBodyMesh(12, false, true, cubeDeformation);
         PartDefinition partDefinition = meshDefinition.getRoot();
         partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-3, -4, -6, 6, 6, 8, cubeDeformation), PartPose.offset(0, 6, -8));
         partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(28, 8).addBox(-4, -10, -7, 8, 16, 6, cubeDeformation), PartPose.offsetAndRotation(0, 5, 2, ((float) Math.PI / 2), 0, 0));
