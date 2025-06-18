@@ -14,7 +14,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
@@ -85,6 +84,6 @@ public class CommonUtils {
     }
 
     public static boolean canFeed(LivingEntity entity) {
-        return entity.getType() == EntityType.WOLF || canWearArmor(entity);
+        return canWearArmor(entity);
     }
 }
