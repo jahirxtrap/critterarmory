@@ -1,1 +1,1 @@
-- Fixed wolf armor bug
+- Some fixes
