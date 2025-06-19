@@ -5,10 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AnimalMixin",
-    "HorseMixin",
-    "LivingEntityMixin",
-    "MushroomCowMixin",
-    "SheepMixin"
+    "HorseMixin"
   ],
   "client": [
     "CatRendererMixin",
