@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "critterarmory:copper_sheep_armor",
     "critterarmory:iron_sheep_armor",
     "critterarmory:golden_sheep_armor",
     "critterarmory:diamond_sheep_armor",

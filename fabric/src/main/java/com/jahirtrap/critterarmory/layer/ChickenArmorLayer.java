@@ -7,7 +7,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ChickenModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.ChickenRenderState;
@@ -29,14 +29,13 @@ public class ChickenArmorLayer extends RenderLayer<ChickenRenderState, ChickenMo
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, ChickenRenderState renderState, float f, float g) {
+    public void submit(PoseStack poseStack, SubmitNodeCollector collector, int i, ChickenRenderState renderState, float f, float g) {
         if (renderState instanceof RenderStates.Chicken armorRenderState) {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
                 ChickenModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                model.setupAnim(armorRenderState);
-                renderArmor(equippable.assetId().get(), model, stack, poseStack, bufferSource, i);
+                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "critterarmory:copper_pig_armor",
     "critterarmory:iron_pig_armor",
     "critterarmory:golden_pig_armor",
     "critterarmory:diamond_pig_armor",

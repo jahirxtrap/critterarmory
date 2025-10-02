@@ -11,6 +11,7 @@ import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 
 public class ModMaterials {
     public interface MobArmor {
+        Map.Entry<ArmorMaterial, String> COPPER = copy(ArmorMaterials.COPPER);
         Map.Entry<ArmorMaterial, String> IRON = copy(ArmorMaterials.IRON);
         Map.Entry<ArmorMaterial, String> GOLD = copy(ArmorMaterials.GOLD, "golden");
         Map.Entry<ArmorMaterial, String> DIAMOND = copy(ArmorMaterials.DIAMOND);

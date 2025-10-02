@@ -19,6 +19,7 @@ import static com.jahirtrap.critterarmory.CritterArmoryMod.MODID;
 public class ModContent {
     public static final List<Item> ITEMS = new ArrayList<>();
 
+    public static final List<Item> COPPER_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.COPPER, new Item.Properties());
     public static final List<Item> IRON_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.IRON, new Item.Properties());
     public static final List<Item> GOLD_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.GOLD, new Item.Properties());
     public static final List<Item> DIAMOND_MOB_ARMORS = registerMobArmors(ModMaterials.MobArmor.DIAMOND, new Item.Properties());
@@ -34,7 +35,7 @@ public class ModContent {
 
     private static List<Item> registerMobArmors(Map.Entry<ArmorMaterial, String> entry, Item.Properties itemProp) {
         List<Item> items = new ArrayList<>();
-        if (entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey())
+        if (entry.getKey() != ModMaterials.MobArmor.COPPER.getKey() && entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey())
             items.add(registerItem(entry.getValue() + "_horse_armor", (p) -> new Item(p.horseArmor(entry.getKey())), itemProp));
         items.add(registerItem(entry.getValue() + "_wolf_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CANINE, p), itemProp));
         items.add(registerItem(entry.getValue() + "_cat_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CAT, p), itemProp));

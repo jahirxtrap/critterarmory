@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "critterarmory:copper_cat_armor",
     "critterarmory:iron_cat_armor",
     "critterarmory:golden_cat_armor",
     "critterarmory:diamond_cat_armor",

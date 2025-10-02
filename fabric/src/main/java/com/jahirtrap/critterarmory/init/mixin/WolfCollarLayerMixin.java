@@ -18,7 +18,7 @@ public abstract class WolfCollarLayerMixin {
     @Shadow
     private static ResourceLocation WOLF_COLLAR_LOCATION;
 
-    @Redirect(method = "render*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/layers/WolfCollarLayer;WOLF_COLLAR_LOCATION:Lnet/minecraft/resources/ResourceLocation;"))
+    @Redirect(method = "submit*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/layers/WolfCollarLayer;WOLF_COLLAR_LOCATION:Lnet/minecraft/resources/ResourceLocation;"))
     private ResourceLocation redirectWolfCollarTexture() {
         if (!ModConfig.modernWolfCollar)
             return ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/wolf/wolf_collar.png");

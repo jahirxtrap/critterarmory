@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "IAI",
+    "III",
+    "IAI"
+  ],
+  "key": {
+    "I": "#c:ingots/copper",
+    "A": "minecraft:bone"
+  },
+  "result": {
+    "id": "critterarmory:copper_wolf_armor",
+    "count": 1
+  }
+}

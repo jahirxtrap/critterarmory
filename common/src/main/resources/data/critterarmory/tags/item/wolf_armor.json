@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "critterarmory:copper_wolf_armor",
     "critterarmory:iron_wolf_armor",
     "critterarmory:golden_wolf_armor",
     "critterarmory:diamond_wolf_armor",

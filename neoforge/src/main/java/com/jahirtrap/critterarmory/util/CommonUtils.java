@@ -5,10 +5,9 @@ import com.jahirtrap.critterarmory.init.ModContent;
 import com.jahirtrap.critterarmory.init.ModTags;
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
@@ -45,13 +44,13 @@ public class CommonUtils {
         return entityArmorMap.entrySet().stream().filter(entry -> stack.is(entry.getKey())).map(Map.Entry::getValue).findFirst().orElse("");
     }
 
-    public static void renderArmor(ResourceKey<EquipmentAsset> resourceKey, Model model, ItemStack stack, PoseStack poseStack, MultiBufferSource bufferSource, int i) {
+    public static <S> void renderArmor(ResourceKey<EquipmentAsset> resourceKey, Model<? super S> model, S object, ItemStack stack, PoseStack poseStack, SubmitNodeCollector collector, int i) {
         if (!ModConfig.renderArmors || (!ModConfig.renderCatArmors && stack.is(ModTags.Items.CAT_ARMOR)) || (!ModConfig.renderChickenArmors && stack.is(ModTags.Items.CHICKEN_ARMOR)) || (!ModConfig.renderCowArmors && stack.is(ModTags.Items.COW_ARMOR)) || (!ModConfig.renderPigArmors && stack.is(ModTags.Items.PIG_ARMOR)) || (!ModConfig.renderSheepArmors && stack.is(ModTags.Items.SHEEP_ARMOR)))
             return;
         String type = getArmorType(stack);
         if (!type.isBlank()) {
-            VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(resourceKey.location().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png")));
-            model.renderToBuffer(poseStack, consumer, i, OverlayTexture.NO_OVERLAY);
+            var resource = resourceKey.location().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png");
+            collector.submitModel(model, object, poseStack, RenderType.armorCutoutNoCull(resource), i, OverlayTexture.NO_OVERLAY, 0, null);
         }
     }
 
