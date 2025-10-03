@@ -5,7 +5,7 @@ import com.jahirtrap.critterarmory.util.RenderStates;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.PigModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.PigRenderState;
@@ -29,14 +29,13 @@ public class PigArmorLayer extends RenderLayer<PigRenderState, PigModel> {
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, PigRenderState renderState, float f, float g) {
+    public void submit(PoseStack poseStack, SubmitNodeCollector collector, int i, PigRenderState renderState, float f, float g) {
         if (renderState instanceof RenderStates.Pig armorRenderState) {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
                 PigModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                model.setupAnim(armorRenderState);
-                renderArmor(equippable.assetId().get(), model, stack, poseStack, bufferSource, i);
+                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }
