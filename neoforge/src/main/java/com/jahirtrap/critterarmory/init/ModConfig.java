@@ -14,7 +14,7 @@ public class ModConfig extends TXFConfig {
 
     @Entry(category = RENDERING, name = "Render Armors", itemDisplay = "critterarmory:netherite_pig_armor")
     public static boolean renderArmors = true;
-    @Entry(category = RENDERING, name = "Render Horse Armors", itemDisplay = "critterarmory:netherite_horse_armor")
+    @Entry(category = RENDERING, name = "Render Horse Armors", itemDisplay = "minecraft:netherite_horse_armor")
     public static boolean renderHorseArmors = true;
     @Entry(category = RENDERING, name = "Render Wolf Armors", itemDisplay = "critterarmory:netherite_wolf_armor")
     public static boolean renderWolfArmors = true;

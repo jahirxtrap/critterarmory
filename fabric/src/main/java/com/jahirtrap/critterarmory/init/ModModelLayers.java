@@ -2,11 +2,15 @@ package com.jahirtrap.critterarmory.init;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.model.*;
+import net.minecraft.client.model.animal.chicken.ChickenModel;
+import net.minecraft.client.model.animal.cow.CowModel;
+import net.minecraft.client.model.animal.feline.CatModel;
+import net.minecraft.client.model.animal.pig.PigModel;
+import net.minecraft.client.model.animal.sheep.SheepModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +33,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation SHEEP_BABY_ARMOR = register("sheep_baby_armor", ModLayerDefinitions.SheepArmor().apply(SheepModel.BABY_TRANSFORMER));
 
     private static ModelLayerLocation register(String name, LayerDefinition layerDefinition) {
-        ModelLayerLocation layerLocation = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MODID, name), ModelLayers.DEFAULT_LAYER);
+        ModelLayerLocation layerLocation = new ModelLayerLocation(Identifier.fromNamespaceAndPath(MODID, name), ModelLayers.DEFAULT_LAYER);
         ModelLayers.ALL_MODELS.add(layerLocation);
         LAYERS.put(layerLocation, layerDefinition);
         return layerLocation;

@@ -2,8 +2,8 @@ package com.jahirtrap.critterarmory.init;
 
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
@@ -29,12 +29,12 @@ public class ModContent {
     public static final RegistryObject<Item> VITALITY_FEED = registerItem("vitality_feed", Item::new, new Item.Properties());
 
     private static RegistryObject<Item> registerItem(String name, Function<Item.Properties, Item> function, Item.Properties itemProp) {
-        return ITEMS.register(name, () -> function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, name)))));
+        return ITEMS.register(name, () -> function.apply(itemProp.setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MODID, name)))));
     }
 
     private static List<RegistryObject<Item>> registerMobArmors(Map.Entry<ArmorMaterial, String> entry, Item.Properties itemProp) {
         List<RegistryObject<Item>> items = new ArrayList<>();
-        if (entry.getKey() != ModMaterials.MobArmor.COPPER.getKey() && entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey())
+        if (entry.getKey() != ModMaterials.MobArmor.COPPER.getKey() && entry.getKey() != ModMaterials.MobArmor.IRON.getKey() && entry.getKey() != ModMaterials.MobArmor.GOLD.getKey() && entry.getKey() != ModMaterials.MobArmor.DIAMOND.getKey() && entry.getKey() != ModMaterials.MobArmor.NETHERITE.getKey())
             items.add(registerItem(entry.getValue() + "_horse_armor", (p) -> new Item(p.horseArmor(entry.getKey())), itemProp));
         items.add(registerItem(entry.getValue() + "_wolf_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CANINE, p), itemProp));
         items.add(registerItem(entry.getValue() + "_cat_armor", (p) -> new BaseAnimalArmorItem(entry.getKey(), BaseAnimalArmorItem.BodyType.CAT, p), itemProp));

@@ -3,7 +3,7 @@ package com.jahirtrap.critterarmory.layer;
 import com.jahirtrap.critterarmory.init.ModModelLayers;
 import com.jahirtrap.critterarmory.util.RenderStates;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.CowModel;
+import net.minecraft.client.model.animal.cow.CowModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

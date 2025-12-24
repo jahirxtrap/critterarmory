@@ -2,7 +2,8 @@ package com.jahirtrap.critterarmory.init.mixin;
 
 import com.jahirtrap.critterarmory.init.ModConfig;
 import net.minecraft.client.renderer.entity.layers.WolfCollarLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,12 +17,12 @@ public abstract class WolfCollarLayerMixin {
 
     @Final
     @Shadow
-    private static ResourceLocation WOLF_COLLAR_LOCATION;
+    private static Identifier WOLF_COLLAR_LOCATION;
 
-    @Redirect(method = "submit*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/layers/WolfCollarLayer;WOLF_COLLAR_LOCATION:Lnet/minecraft/resources/ResourceLocation;"))
-    private ResourceLocation redirectWolfCollarTexture() {
+    @Redirect(method = "submit*", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/layers/WolfCollarLayer;WOLF_COLLAR_LOCATION:Lnet/minecraft/resources/Identifier;", opcode = Opcodes.GETSTATIC))
+    private Identifier redirectWolfCollarTexture() {
         if (!ModConfig.modernWolfCollar)
-            return ResourceLocation.fromNamespaceAndPath(MODID, "textures/entity/wolf/wolf_collar.png");
+            return Identifier.fromNamespaceAndPath(MODID, "textures/entity/wolf/wolf_collar.png");
         else return WOLF_COLLAR_LOCATION;
     }
 }

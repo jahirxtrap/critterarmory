@@ -1,7 +1,7 @@
 package com.jahirtrap.critterarmory.init;
 
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.*;
 
 import java.util.EnumMap;
@@ -24,11 +24,11 @@ public class ModMaterials {
         }
 
         private static ResourceKey<EquipmentAsset> createAsset(String name) {
-            return ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MODID, name));
+            return ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MODID, name));
         }
 
         private static Map.Entry<ArmorMaterial, String> copy(ArmorMaterial material) {
-            return register(new ArmorMaterial(material.durability(), material.defense(), material.enchantmentValue(), material.equipSound(), material.toughness(), material.knockbackResistance(), material.repairIngredient(), createAsset(material.assetId().location().getPath())));
+            return register(new ArmorMaterial(material.durability(), material.defense(), material.enchantmentValue(), material.equipSound(), material.toughness(), material.knockbackResistance(), material.repairIngredient(), createAsset(material.assetId().identifier().getPath())));
         }
 
         private static Map.Entry<ArmorMaterial, String> copy(ArmorMaterial material, String name) {
@@ -36,7 +36,7 @@ public class ModMaterials {
         }
 
         private static Map.Entry<ArmorMaterial, String> register(ArmorMaterial material) {
-            return register(material, material.assetId().location().getPath());
+            return register(material, material.assetId().identifier().getPath());
         }
 
         private static Map.Entry<ArmorMaterial, String> register(ArmorMaterial material, String name) {

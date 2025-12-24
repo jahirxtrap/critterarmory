@@ -6,8 +6,8 @@ import com.jahirtrap.critterarmory.init.ModTags;
 import com.jahirtrap.critterarmory.item.BaseAnimalArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
@@ -49,8 +49,8 @@ public class CommonUtils {
             return;
         String type = getArmorType(stack);
         if (!type.isBlank()) {
-            var resource = resourceKey.location().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png");
-            collector.submitModel(model, object, poseStack, RenderType.armorCutoutNoCull(resource), i, OverlayTexture.NO_OVERLAY, 0, null);
+            var resource = resourceKey.identifier().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png");
+            collector.submitModel(model, object, poseStack, RenderTypes.armorCutoutNoCull(resource), i, OverlayTexture.NO_OVERLAY, 0, null);
         }
     }
 

@@ -1,9 +1,9 @@
 package com.jahirtrap.critterarmory.init;
 
-import net.minecraft.client.model.CatModel;
-import net.minecraft.client.model.FelineModel;
-import net.minecraft.client.model.PigModel;
 import net.minecraft.client.model.QuadrupedModel;
+import net.minecraft.client.model.animal.feline.CatModel;
+import net.minecraft.client.model.animal.feline.FelineModel;
+import net.minecraft.client.model.animal.pig.PigModel;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.neoforged.api.distmarker.Dist;
