@@ -1,4 +1,4 @@
-accessWidener	v1	named
+accessWidener	v2	official
 accessible method net/minecraft/client/renderer/entity/LivingEntityRenderer addLayer (Lnet/minecraft/client/renderer/entity/layers/RenderLayer;)Z
 accessible field net/minecraft/client/model/geom/ModelLayers DEFAULT_LAYER Ljava/lang/String;
 accessible field net/minecraft/client/model/geom/ModelLayers ALL_MODELS Ljava/util/Set;

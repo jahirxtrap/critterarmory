@@ -20,12 +20,10 @@ import static com.jahirtrap.critterarmory.util.CommonUtils.renderArmor;
 @Environment(EnvType.CLIENT)
 public class CowArmorLayer extends RenderLayer<CowRenderState, CowModel> {
     private final CowModel adultModel;
-    private final CowModel babyModel;
 
     public CowArmorLayer(RenderLayerParent<CowRenderState, CowModel> layerParent, EntityModelSet modelSet) {
         super(layerParent);
         this.adultModel = new CowModel(modelSet.bakeLayer(ModModelLayers.COW_ARMOR));
-        this.babyModel = new CowModel(modelSet.bakeLayer(ModModelLayers.COW_BABY_ARMOR));
     }
 
     @Override
@@ -34,8 +32,7 @@ public class CowArmorLayer extends RenderLayer<CowRenderState, CowModel> {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
-                CowModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
+                renderArmor(equippable.assetId().get(), this.adultModel, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }

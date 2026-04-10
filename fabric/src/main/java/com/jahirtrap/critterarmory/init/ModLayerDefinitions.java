@@ -3,8 +3,8 @@ package com.jahirtrap.critterarmory.init;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.animal.feline.CatModel;
-import net.minecraft.client.model.animal.feline.FelineModel;
+import net.minecraft.client.model.animal.feline.AdultCatModel;
+import net.minecraft.client.model.animal.feline.AdultFelineModel;
 import net.minecraft.client.model.animal.pig.PigModel;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
@@ -14,7 +14,7 @@ public class ModLayerDefinitions {
     private static final CubeDeformation cubeDeformation = new CubeDeformation(0.2f);
 
     public static LayerDefinition CatArmor() {
-        return LayerDefinition.create(FelineModel.createBodyMesh(cubeDeformation), 64, 32).apply(CatModel.CAT_TRANSFORMER);
+        return LayerDefinition.create(AdultFelineModel.createBodyMesh(cubeDeformation), 64, 32).apply(AdultCatModel.CAT_TRANSFORMER);
     }
 
     public static LayerDefinition ChickenArmor() {

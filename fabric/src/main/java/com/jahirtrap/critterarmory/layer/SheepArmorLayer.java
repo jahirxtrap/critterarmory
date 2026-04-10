@@ -20,12 +20,10 @@ import static com.jahirtrap.critterarmory.util.CommonUtils.renderArmor;
 @Environment(EnvType.CLIENT)
 public class SheepArmorLayer extends RenderLayer<SheepRenderState, SheepModel> {
     private final SheepModel adultModel;
-    private final SheepModel babyModel;
 
     public SheepArmorLayer(RenderLayerParent<SheepRenderState, SheepModel> layerParent, EntityModelSet modelSet) {
         super(layerParent);
         this.adultModel = new SheepModel(modelSet.bakeLayer(ModModelLayers.SHEEP_ARMOR));
-        this.babyModel = new SheepModel(modelSet.bakeLayer(ModModelLayers.SHEEP_BABY_ARMOR));
     }
 
     @Override
@@ -34,8 +32,7 @@ public class SheepArmorLayer extends RenderLayer<SheepRenderState, SheepModel> {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
-                SheepModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
+                renderArmor(equippable.assetId().get(), this.adultModel, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }

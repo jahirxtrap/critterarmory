@@ -3,7 +3,8 @@ package com.jahirtrap.critterarmory.layer;
 import com.jahirtrap.critterarmory.init.ModModelLayers;
 import com.jahirtrap.critterarmory.util.RenderStates;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.feline.CatModel;
+import net.minecraft.client.model.animal.feline.AbstractFelineModel;
+import net.minecraft.client.model.animal.feline.AdultCatModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -18,14 +19,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import static com.jahirtrap.critterarmory.util.CommonUtils.renderArmor;
 
 @OnlyIn(Dist.CLIENT)
-public class CatArmorLayer extends RenderLayer<CatRenderState, CatModel> {
-    private final CatModel adultModel;
-    private final CatModel babyModel;
+public class CatArmorLayer extends RenderLayer<CatRenderState, AbstractFelineModel<CatRenderState>> {
+    private final AdultCatModel adultModel;
 
-    public CatArmorLayer(RenderLayerParent<CatRenderState, CatModel> layerParent, EntityModelSet modelSet) {
+    public CatArmorLayer(RenderLayerParent<CatRenderState, AbstractFelineModel<CatRenderState>> layerParent, EntityModelSet modelSet) {
         super(layerParent);
-        this.adultModel = new CatModel(modelSet.bakeLayer(ModModelLayers.CAT_ARMOR));
-        this.babyModel = new CatModel(modelSet.bakeLayer(ModModelLayers.CAT_BABY_ARMOR));
+        this.adultModel = new AdultCatModel(modelSet.bakeLayer(ModModelLayers.CAT_ARMOR));
     }
 
     @Override
@@ -34,8 +33,7 @@ public class CatArmorLayer extends RenderLayer<CatRenderState, CatModel> {
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
-                CatModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
+                renderArmor(equippable.assetId().get(), this.adultModel, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }

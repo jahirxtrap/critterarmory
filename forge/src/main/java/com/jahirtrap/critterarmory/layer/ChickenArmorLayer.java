@@ -3,6 +3,7 @@ package com.jahirtrap.critterarmory.layer;
 import com.jahirtrap.critterarmory.init.ModModelLayers;
 import com.jahirtrap.critterarmory.util.RenderStates;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.model.animal.chicken.AdultChickenModel;
 import net.minecraft.client.model.animal.chicken.ChickenModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -19,13 +20,11 @@ import static com.jahirtrap.critterarmory.util.CommonUtils.renderArmor;
 
 @OnlyIn(Dist.CLIENT)
 public class ChickenArmorLayer extends RenderLayer<ChickenRenderState, ChickenModel> {
-    private final ChickenModel adultModel;
-    private final ChickenModel babyModel;
+    private final AdultChickenModel adultModel;
 
     public ChickenArmorLayer(RenderLayerParent<ChickenRenderState, ChickenModel> layerParent, EntityModelSet modelSet) {
         super(layerParent);
-        this.adultModel = new ChickenModel(modelSet.bakeLayer(ModModelLayers.CHICKEN_ARMOR));
-        this.babyModel = new ChickenModel(modelSet.bakeLayer(ModModelLayers.CHICKEN_BABY_ARMOR));
+        this.adultModel = new AdultChickenModel(modelSet.bakeLayer(ModModelLayers.CHICKEN_ARMOR));
     }
 
     @Override
@@ -34,8 +33,7 @@ public class ChickenArmorLayer extends RenderLayer<ChickenRenderState, ChickenMo
             ItemStack stack = armorRenderState.bodyArmorItem;
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (equippable != null && equippable.assetId().isPresent()) {
-                ChickenModel model = armorRenderState.isBaby ? this.babyModel : this.adultModel;
-                renderArmor(equippable.assetId().get(), model, armorRenderState, stack, poseStack, collector, i);
+                renderArmor(equippable.assetId().get(), this.adultModel, armorRenderState, stack, poseStack, collector, i);
             }
         }
     }

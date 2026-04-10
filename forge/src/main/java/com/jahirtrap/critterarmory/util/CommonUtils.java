@@ -9,7 +9,9 @@ import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -70,6 +72,8 @@ public class CommonUtils {
                         entity.playSound(SoundEvents.PLAYER_LEVELUP);
                     }
                     entity.setHealth(entity.getMaxHealth());
+                    if (entity.level() instanceof ServerLevel level)
+                        level.sendParticles(ParticleTypes.HAPPY_VILLAGER, entity.getX(), entity.getY(0.5), entity.getZ(), 7, entity.getBbWidth() / 2, entity.getBbHeight() / 2, entity.getBbWidth() / 2, 0);
                     return true;
                 }
             }
