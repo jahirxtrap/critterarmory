@@ -1,2 +1,1 @@
-- Update to 26.1.2
-- Added particles when using Vitality Feed
+- Updated config lib
