@@ -15,4 +15,4 @@ Armor for your animals: pig, cow, sheep, chicken, wolf, cat & more
 
 - <a href="https://modrinth.com/mod/modmenu" target="_blank">Mod Menu mod</a> <strong>(Optional)</strong>
 
-<img src="https://cdn.modrinth.com/data/eDysihLO/images/e2eae6067ef24095ff8e1fc4f848c53ff867fd2c.png"><br>
+<img src="https://cdn.modrinth.com/data/eDysihLO/images/e2eae6067ef24095ff8e1fc4f848c53ff867fd2c.png">
