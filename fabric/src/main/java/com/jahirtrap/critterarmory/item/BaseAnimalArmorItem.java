@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -19,12 +20,12 @@ public class BaseAnimalArmorItem extends Item {
     }
 
     public enum BodyType {
-        CANINE(SoundEvents.WOLF_ARMOR_BREAK, EntityType.WOLF),
-        CAT(SoundEvents.ITEM_BREAK, EntityType.CAT),
-        CHICKEN(SoundEvents.ITEM_BREAK, EntityType.CHICKEN),
-        COW(SoundEvents.ITEM_BREAK, EntityType.COW, EntityType.MOOSHROOM),
-        PIG(SoundEvents.ITEM_BREAK, EntityType.PIG),
-        SHEEP(SoundEvents.ITEM_BREAK, EntityType.SHEEP);
+        CANINE(SoundEvents.WOLF_ARMOR_BREAK, EntityTypes.WOLF),
+        CAT(SoundEvents.ITEM_BREAK, EntityTypes.CAT),
+        CHICKEN(SoundEvents.ITEM_BREAK, EntityTypes.CHICKEN),
+        COW(SoundEvents.ITEM_BREAK, EntityTypes.COW, EntityTypes.MOOSHROOM),
+        PIG(SoundEvents.ITEM_BREAK, EntityTypes.PIG),
+        SHEEP(SoundEvents.ITEM_BREAK, EntityTypes.SHEEP);
 
         public final Holder<SoundEvent> breakingSound;
         public final HolderSet<EntityType<?>> allowedEntities;

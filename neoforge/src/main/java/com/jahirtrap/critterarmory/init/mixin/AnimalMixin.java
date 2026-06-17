@@ -26,7 +26,7 @@ public abstract class AnimalMixin {
 
         if (canWearArmor(entity)) {
             if (entity.isEquippableInSlot(stack, EquipmentSlot.BODY) && !entity.isWearingBodyArmor() && !entity.isBaby()) {
-                entity.setBodyArmorItem(stack.copyWithCount(1));
+                entity.setItemSlot(EquipmentSlot.BODY, stack.copyWithCount(1));
                 stack.consume(1, player);
                 cir.setReturnValue(InteractionResult.SUCCESS);
             }

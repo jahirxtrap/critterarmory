@@ -2,7 +2,7 @@ package com.jahirtrap.critterarmory.init.mixin;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.animal.equine.Horse;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@ public abstract class HorseMixin {
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         var entity = (Horse) (Object) this;
-        if (entity.getType() == EntityType.HORSE && !entity.isVehicle() && entity.isTamed() && entity.getOwner() == player && !player.isSecondaryUseActive() && feedEntity(player, hand, entity))
+        if (entity.getType() == EntityTypes.HORSE && !entity.isVehicle() && entity.isTamed() && entity.getOwner() == player && !player.isSecondaryUseActive() && feedEntity(player, hand, entity))
             cir.setReturnValue(InteractionResult.SUCCESS_SERVER);
     }
 }
