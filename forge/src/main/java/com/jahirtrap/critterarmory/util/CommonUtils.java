@@ -52,7 +52,7 @@ public class CommonUtils {
         String type = getArmorType(stack);
         if (!type.isBlank()) {
             var resource = resourceKey.identifier().withPath(path -> "textures/entity/equipment/" + type + "/" + path + ".png");
-            collector.submitModel(model, object, poseStack, RenderTypes.armorCutoutNoCull(resource), i, OverlayTexture.NO_OVERLAY, 0, null);
+            collector.submitModel(model, object, poseStack, RenderTypes.armorCutoutNoCull(resource), i, OverlayTexture.NO_OVERLAY, 0);
         }
     }
 
